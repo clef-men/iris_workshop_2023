@@ -234,8 +234,8 @@
 }
 \only<3>{
 	\tikz[remember picture] \node[align=left] (model_3) {
-		either 1) some value $v$ is atomically popped at the owner's end \\
-		or 2) the deque is seen empty
+		either 1) the deque is seen empty \\
+		or 2) some value $v$ is atomically popped at the owner's end
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] (model_1.south) ;
@@ -290,8 +290,8 @@
 \vfill
 \only<2>{
 	\tikz[remember picture] \node[align=left] (model_3) {
-		either 1) some value $v$ is atomically popped at the thieves' end \\
-		or 2) the deque is seen empty
+		either 1) the deque is seen empty \\
+		or 2) some value $v$ is atomically popped at the thieves' end
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] (model_1.south) ;
