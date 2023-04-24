@@ -165,7 +165,7 @@
 }
 \only<5>{
 	\tikz[remember picture] \node[align=left] (model_3) {
-		some value $v$ is atomically pushed at the owner's end
+		$v$ is atomically pushed at the owner's end
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] (model_1.south) ;
