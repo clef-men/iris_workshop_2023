@@ -1,0 +1,9 @@
+\begin{frame}[fragile]{Verification of a scheduler}
+\begin{Verbatim}[commandchars=\\\{\}]
+let rec fib pool n =
+  if n < 2 then 1 else
+  let r1 = \textcolor{blue}{async} pool (fun () -> fib_par (n - 1)) in
+  let r2 = \textcolor{blue}{async} pool (fun () -> fib_par (n - 2)) in
+  \textcolor{blue}{await} pool r1 + \textcolor{blue}{await} pool r2
+\end{Verbatim}
+\end{frame}

@@ -1,0 +1,122 @@
+\documentclass[serif]{beamer}
+
+% ---------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% ---------------------------------------------------------
+
+\AtBeginSection[]{
+	\begin{frame}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
+\setbeamertemplate{navigation symbols}{}
+\addtobeamertemplate{footline}{%
+	\hspace*{\fill}%
+	\llap{%
+		\insertframenumber\,/\,\inserttotalframenumber%
+		\hspace{5pt}%
+	}
+	\vskip4pt%
+}
+
+\setbeamertemplate{blocks}[rounded][shadow]
+
+\usepackage{appendixnumberbeamer}
+
+% ---------------------------------------------------------
+
+\usepackage{xcolor}
+\usepackage{xspace} % \xspace
+
+\usepackage{graphicx}
+
+\usepackage{stackrel} % \stackrel
+
+\usepackage{fancyvrb} % Verbatim
+
+\usepackage{dashbox} % \dbox
+
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+
+% ---------------------------------------------------------
+
+\usepackage{amsmath} % align*
+
+\usepackage{amssymb} % \mathbb
+\usepackage{mathrsfs} % \mathscr
+\usepackage{bbm} % \mathbbm
+\usepackage{tensor} % \tensor
+
+\usepackage{mathabx} % \ast, \bigast
+
+\usepackage{mathpartir}
+
+\let\oldexists\exists
+\let\exists\relax\DeclareMathOperator{\exists}{\oldexists}
+\let\oldforall\forall
+\let\forall\relax\DeclareMathOperator{\forall}{\oldforall}
+
+\DeclareMathOperator{\lambdaabs}{\lambda}
+\DeclareMathOperator{\muabs}{\mu}
+\DeclareMathOperator{\nuabs}{\nu}
+
+% ---------------------------------------------------------
+
+\usepackage{listings}
+\usepackage{lstcaml}
+
+% ---------------------------------------------------------
+
+\usepackage{overtools}
+
+% ---------------------------------------------------------
+
+\input{macros}
+
+% ---------------------------------------------------------
+
+\title{
+	Verification of Chase-Lev work-stealing deque
+}
+\author{
+	Clément Allain \\
+	François Pottier
+}
+
+% ---------------------------------------------------------
+% ---------------------------------------------------------
+
+\begin{document}
+
+% ---------------------------------------------------------
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+% ---------------------------------------------------------
+
+\input{context}
+\input{work_stealing}
+\input{synopsis}
+\input{specification}
+
+% ---------------------------------------------------------
+
+\begin{frame}[plain, noframenumbering]
+\LARGE
+\begin{center}
+	Thank you for your attention!
+\end{center}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\end{document}

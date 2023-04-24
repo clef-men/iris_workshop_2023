@@ -1,0 +1,156 @@
+\RequirePackage{color}
+\RequirePackage{amstext}
+
+\definecolor{dktest}{rgb}{0.9,0.9,0.9}
+\definecolor{ltblue}{rgb}{0,0.4,0.4}
+\definecolor{dkblue}{rgb}{0,0.1,0.6}
+\definecolor{dkgreen}{rgb}{0,0.2,0}
+\definecolor{dkviolet}{rgb}{0.3,0,0.5}
+\definecolor{dkred}{rgb}{0.5,0,0}
+
+\lstdefinelanguage{MyCaml}{
+% Anything betweeen $ becomes LaTeX math mode
+mathescape=true,
+%
+% Comments may or not include Latex commands
+texcl=false,
+%
+%
+% Vernacular commands
+morekeywords=[1]{
+and,
+as,
+assert,
+asr,
+begin,
+class,
+closed,
+constraint,
+do,
+done,
+downto,
+else,
+end,
+external,
+false,
+for,
+fun,
+function,
+functor,
+if,
+in,
+include,
+inherit,
+land,
+lazy,
+let,
+lor,
+lsl,
+lsr,
+lxor,
+match,
+method,
+mod,
+module,
+mutable,
+new,
+not,
+object,
+of,
+open,
+or,
+parser,
+private,
+rec,
+repeat,
+sig,
+struct,
+then,
+to,
+true,
+try,
+type,
+val,
+virtual,
+when,
+while,
+with,
+->,
+<-,
+(),
+[],
+},
+%
+% Comments delimiters, we do turn this off for the manual
+morecomment=[s]{(*}{*)},%
+%
+% Spaces are not displayed as a special character
+showstringspaces=false,
+%
+% String delimiters
+morestring=[b]",%
+%
+% Size of tabulations
+tabsize=2,
+%
+% Enables ASCII chars 128 to 255
+extendedchars=false,
+%
+% Case sensitivity
+sensitive=true,
+%
+% Automatic breaking of long lines
+breaklines=false,
+%
+% Default style fors listings
+basicstyle=\small,
+%
+% Position of captions is bottom
+captionpos=b,
+%
+% Full flexible columns
+flexiblecolumns=false,
+%
+% Style for (listings') identifiers
+identifierstyle={\ttfamily\color{black}},
+% Note : highlighting of Coq identifiers is done through a new
+% delimiter definition through an lstset at the begining of the
+% document. Don't know how to do better.
+%
+% Style for declaration keywords
+keywordstyle=[1]{\ttfamily\color{dkblue}},
+% Style for strings
+stringstyle=\ttfamily,
+% Style for comments
+commentstyle={\ttfamily\color{dkred}},
+%
+%
+%moredelim=**[is][\ttfamily\color{red}]{/&}{&/},
+%litterate
+%    {==>}{{$\Rightarrow$}}1
+%literate={~}{{$bla$}}1
+%literate={:=}{{$\gets$}}1 {<=}{{$\leq$}}1 {>=}{{$\geq$}}1 {<>}{{$\neq$}}1
+%
+}[keywords,comments,strings]
+
+%\lstnewenvironment{caml}{\lstset{language=MyCaml,basicstyle=\ttfamily\basiccodesize}}{}
+\lstnewenvironment{caml}{\lstset{language=MyCaml,basicstyle=\ttfamily\normalsize,%
+  literate={\\*}{{$\Hstar$}}1 {~>}{{$\Hdatasep$}}1 {==>}{{$\Himpl$}}1}}{}
+\lstnewenvironment{camls}{\lstset{language=MyCaml,basicstyle=\ttfamily\scriptsize}}{}
+\lstnewenvironment{camll}{\lstset{language=MyCaml,basicstyle=\ttfamily\small}}{}
+% pour inliner dans le texte
+\def\lstcamlinline{\lstinline[language=MyCaml, basicstyle=\ttfamily\small]}
+% pour inliner dans les tableaux / displaymath...
+\def\lstcamlinlines{\lstinline[language=MyCaml, basicstyle=\ttfamily\normalsize]}
+
+
+\newcommand{\camlinline}[1]{\text{\lstcamlinline{#1}}}
+\newcommand{\Camlinline}[1]{(\camlinline{#1})}
+
+\newcommand{\ca}[1]{\camlinline{#1}}
+\newcommand{\Ca}[1]{\Camlinline{#1}}
+\let\oc\lstcamlinline
+
+%for use in inferrules, to work around bug
+\newcommand{\cafake}[1]{\texttt{#1}}
+\newcommand{\Cafake}[1]{(\texttt{#1})}

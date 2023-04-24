@@ -1,0 +1,88 @@
+\newcommand{\mathhyphen}{{\hbox{-}}}
+
+\newcommand{\eqdef}{\stackrel{\Delta}=}
+
+\newcommand\doubleplus{+\kern-1.3ex+\kern0.8ex}
+\newcommand\mdoubleplus{\ensuremath{\mathbin{+\mkern-10mu+}}}
+
+\newcommand{\sref}[1]{\S\ref{#1}}
+\newcommand{\fref}[1]{Figure~\ref{#1}}
+
+\newcommand{\OCaml}{\textsc{OCaml}\xspace}
+\newcommand{\Coq}{\textsc{Coq}\xspace}
+\newcommand{\Iris}{\textsc{Iris}\xspace}
+
+\newcommand{\triple}[3]{%
+	\left\lbrace\, #1 \,\right\rbrace\ %
+	#2\ %
+	\left\lbrace\, #3 \,\right\rbrace%
+}
+\newcommand{\triplePretty}[3]{%
+	\begin{array}{c}
+			\left\lbrace\, #1 \,\right\rbrace
+		\\ \hline
+			#2
+		\\ \hline
+			\left\lbrace\, #3 \,\right\rbrace
+	\end{array}
+}
+\newcommand{\atriple}[6]{%
+	\left\langle\, \forall #1 \cdot\, #2 \,\right\rangle\ %
+	#3\ %
+	\left\langle\, #4 \cdot\, \lambda\, \exists #5 \cdot\, #6 \,\right\rangle%
+}
+\newcommand{\atriplePretty}[6]{%
+	\begin{array}{c}
+			\left\langle\, \forall #1 \cdot\, #2 \,\right\rangle
+		\\ \hline
+			#3
+		\\ \hline
+			\left\langle\, \exists #4 \cdot\, \lambda\, #5 \cdot\, #6 \,\right\rangle
+	\end{array}
+}
+\newcommand{\atripleExt}[9]{%
+	\left\lbrace\, #1 \,\right\rbrace\ %
+	\left\langle\, \forall #2 \cdot\, #3 \,\right\rangle\ %
+	#4,\ #5\ %
+	\left\langle\, \exists #6 \cdot\, #7 \,\right\rangle\ %
+	\left\lbrace\, \lambda\, #8 \cdot\, #9 \,\right\rbrace%
+}
+\newcommand{\atripleExtPretty}[9]{%
+	\begin{array}{c}
+			\left\lbrace\, #1 \,\right\rbrace
+		\\ \hline
+			\left\langle\, \forall #2 \cdot\, #3 \,\right\rangle
+		\\ \hline
+			#4,\ #5
+		\\ \hline
+			\left\langle\, \exists #6 \cdot\, #7 \,\right\rangle
+		\\ \hline
+			\left\lbrace\, \lambda\, #8 \cdot\, #9 \,\right\rbrace
+	\end{array}
+}
+
+\newcommand{\term}[1]{\texttt{#1}}
+\newcommand{\nterm}[1]{\mathrm{#1}}
+
+\newcommand{\exprUnit}{\term{(}\term{)}}
+\newcommand{\exprRef}[1]{\term{ref}\ #1}
+\newcommand{\exprSeq}[2]{#1\,\term{;}\,#2}
+\newcommand{\exprIf}[3]{\term{if}\ #1\ \term{then}\ #2\ \term{else}\ #3}
+\newcommand{\exprLoad}[1]{!\,#1}
+\newcommand{\exprStore}[2]{#1\leftarrow#2}
+\newcommand{\exprCall}[2]{#1\ #2}
+\newcommand{\exprNone}{\term{NONE}}
+\newcommand{\exprSome}[1]{\term{SOME}\ #1}
+
+\newcommand{\iEmpty}{\emptyset}
+\newcommand{\iTrue}{\mathrm{True}}
+\newcommand{\iFalse}{\mathrm{False}}
+\newcommand{\iSep}{\ast}
+\newcommand{\iBigsep}{\bigast}
+\newcommand{\iSepimp}{\mathrel{-\mkern-6mu\sep}}
+\newcommand{\iBupd}{|\!\!\!\Rrightarrow}
+\newcommand{\iPers}{\square}
+\newcommand{\iAuth}[1]{\bullet\,#1}
+\newcommand{\iFrag}[1]{\circ\,#1}
+\newcommand{\iGhost}[2]{\dbox{\strut\ensuremath{#2}}^{#1}}
+\newcommand{\iInv}[2]{\boxed{\strut\ensuremath{#2}}^{#1}}

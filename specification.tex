@@ -1,0 +1,294 @@
+\begin{frame}{Specification --- \texttt{chaselev\_make}}
+\small
+\centering
+\[
+	\triplePretty{
+		\iTrue
+	}{
+		\texttt{chaselev\_make}\ \exprUnit
+	}{
+		\lambda\ t \cdot
+		\tikz[baseline, remember picture]{\node[anchor=base] (inv_1) {${
+			\textcolor{blue}{\mathrm{chaselev \mathhyphen inv}\ t\ \iota}
+		}$}} \iSep
+		\tikz[baseline, remember picture]{\node[anchor=base] (model_1) {${
+			\textcolor{red}{\mathrm{chaselev \mathhyphen model}\ t\ []}
+		}$}} \iSep
+		\tikz[baseline, remember picture]{\node[anchor=base] (owner_1) {${
+			\textcolor{teal}{\mathrm{chaselev \mathhyphen owner}\ t}
+		}$}}
+	}
+\]
+\vfill
+\only<2>{
+	\tikz[remember picture] \node[align=left] (inv_2) {
+		imposes a protocol (using an Iris invariant)
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=blue, thick, ->] (inv_2.north) to [out=100, in=-100] (inv_1.south) ;
+	\end{tikzpicture}
+}
+\only<3>{
+	\tikz[remember picture] \node[align=left] (model_2) {
+		asserts the list of values that the structure (logically) contains
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=red, thick, ->] (model_2.north) to [out=100, in=-100] (model_1.south) ;
+	\end{tikzpicture}
+}
+\only<4>{
+	\tikz[remember picture] \node[align=left] (owner_2) {
+		gives the owner exclusive access to his end of the deque
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=teal, thick, ->] (owner_2.north) to [out=100, in=-100] (owner_1.south) ;
+	\end{tikzpicture}
+}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{Specification --- \texttt{chaselev\_push}}
+\centering
+\[
+	\atripleExtPretty{
+		\tikz[baseline, remember picture]{\node[anchor=base] (inv_1) {${
+			\textcolor{blue}{\mathrm{chaselev \mathhyphen inv}\ t\ \iota}
+		}$}} \iSep
+		\tikz[baseline, remember picture]{\node[anchor=base] (owner_1) {${
+			\textcolor{red}{\mathrm{chaselev \mathhyphen owner}\ t}
+		}$}}
+	}{
+		vs
+	}{
+		\tikz[baseline, remember picture]{\node[anchor=base] (model_1) {${
+			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ vs}
+		}$}}
+	}{
+		\texttt{chaselev\_push}\ t\ v
+	}{
+		\uparrow\iota
+	}{
+	}{
+		\tikz[baseline, remember picture]{\node[anchor=base] (model_2) {${
+			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ (vs \mdoubleplus [v])}
+		}$}}
+	}{
+		\exprUnit
+	}{
+		\tikz[baseline, remember picture]{\node[anchor=base] (owner_2) {${
+			\textcolor{red}{\mathrm{chaselev \mathhyphen owner}\ t}
+		}$}}
+	}
+\]
+\begin{overbox}<2>
+	\[
+		\atripleExtPretty{
+			\textcolor{red}{P}
+		}{
+			\textcolor{purple}{\overline{x}}
+		}{
+			\textcolor{teal}{P_\mathrm{lin}}
+		}{
+			e
+		}{
+			E
+		}{
+			\textcolor{purple}{\overline{y}}
+		}{
+			\textcolor{teal}{Q_\mathrm{lin}}
+		}{
+			res
+		}{
+			\textcolor{red}{Q}
+		}
+	\]
+	\begin{align*}
+			\textcolor{red}{P}
+			&:
+			\text{private precondition}
+		\\
+			\textcolor{red}{Q}
+			&:
+			\text{private postcondition}
+		\\
+			\textcolor{teal}{P_\mathrm{lin}}
+			&:
+			\text{public precondition}
+		\\
+			\textcolor{teal}{Q_\mathrm{lin}}
+			&:
+			\text{public postcondition}
+	\end{align*}
+\end{overbox}
+\begin{overbox}<3>
+	For a concurrent data structure:
+	\[
+		\atripleExtPretty{
+			\textcolor{blue}{\mathrm{??? \mathhyphen inv} \cdots} \iSep
+			\textcolor{red}{P}
+		}{
+			\textcolor{purple}{\overline{x}}
+		}{
+			\textcolor{teal}{\mathrm{??? \mathhyphen model} \cdots}
+		}{
+			e
+		}{
+			E
+		}{
+			\textcolor{purple}{\overline{y}}
+		}{
+			\textcolor{teal}{\mathrm{??? \mathhyphen model} \cdots}
+		}{
+			res
+		}{
+			\textcolor{red}{Q}
+		}
+	\]
+\end{overbox}
+\vfill
+\only<4>{
+	\tikz[remember picture] \node[align=left] (owner_3) {
+		owner's operation
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] (owner_1.south) ;
+		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] (owner_2.south) ;
+	\end{tikzpicture}
+}
+\only<5>{
+	\tikz[remember picture] \node[align=left] (model_3) {
+		some value $v$ is atomically pushed at the owner's end
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] (model_1.south) ;
+		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] ([xshift=1cm]model_2.south) ;
+	\end{tikzpicture}
+}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{Specification --- \texttt{chaselev\_pop}}
+\footnotesize
+\centering
+\[
+	\atripleExtPretty{
+		\tikz[baseline, remember picture]{\node[anchor=base] (inv_1) {${
+			\textcolor{blue}{\mathrm{chaselev \mathhyphen inv}\ t\ \iota}
+		}$}} \iSep
+		\tikz[baseline, remember picture]{\node[anchor=base] (owner_1) {${
+			\textcolor{red}{\mathrm{chaselev \mathhyphen owner}\ t}
+		}$}}
+	}{
+		vs
+	}{
+		\tikz[baseline, remember picture]{\node[anchor=base] (model_1) {${
+			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ vs}
+		}$}}
+	}{
+		\texttt{chaselev\_pop}\ t
+	}{
+		\uparrow\iota
+	}{
+		o
+	}{
+		\tikz[baseline, remember picture]{\node[anchor=base] (model_2) {${
+			\textcolor{teal}{
+				\bigvee\left[\begin{array}{l}
+						vs = [] \iSep
+						o = \exprNone \iSep
+						\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ []}
+					\\
+						\exists v, vs' \cdot
+						vs = vs' \mdoubleplus [v] \iSep
+						o = \exprSome{v} \iSep
+						\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ vs'}
+				\end{array}\right]
+			}
+		}$}}
+	}{
+		o
+	}{
+		\tikz[baseline, remember picture]{\node[anchor=base] (owner_2) {${
+			\textcolor{red}{\mathrm{chaselev \mathhyphen owner}\ t}
+		}$}}
+	}
+\]
+\vfill
+\only<2>{
+	\tikz[remember picture] \node[align=left] (owner_3) {
+		owner's operation
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] (owner_1.south) ;
+		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] (owner_2.south) ;
+	\end{tikzpicture}
+}
+\only<3>{
+	\tikz[remember picture] \node[align=left] (model_3) {
+		either 1) some value $v$ is atomically popped at the owner's end \\
+		or 2) the deque is seen empty
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] (model_1.south) ;
+		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] ([xshift=1cm]model_2.south) ;
+	\end{tikzpicture}
+}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{Specification --- \texttt{chaselev\_steal}}
+\footnotesize
+\centering
+\[
+	\atripleExtPretty{
+		\tikz[baseline, remember picture]{\node[anchor=base] (inv_1) {${
+			\textcolor{blue}{\mathrm{chaselev \mathhyphen inv}\ t\ \iota}
+		}$}}
+	}{
+		vs
+	}{
+		\tikz[baseline, remember picture]{\node[anchor=base] (model_1) {${
+			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ vs}
+		}$}}
+	}{
+		\texttt{chaselev\_steal}\ t
+	}{
+		\uparrow\iota
+	}{
+		o
+	}{
+		\tikz[baseline, remember picture]{\node[anchor=base] (model_2) {${
+			\textcolor{teal}{
+				\bigvee\left[\begin{array}{l}
+						vs = [] \iSep
+						o = \exprNone \iSep
+						\mathrm{chaselev \mathhyphen model}\ t\ []
+					\\
+						\exists v, vs' \cdot
+						vs = v :: vs' \iSep
+						o = \exprSome{v} \iSep
+						\mathrm{chaselev \mathhyphen model}\ t\ vs'
+				\end{array}\right]
+			}
+		}$}}
+	}{
+		o
+	}{
+		\iTrue
+	}
+\]
+\vfill
+\only<2>{
+	\tikz[remember picture] \node[align=left] (model_3) {
+		either 1) some value $v$ is atomically popped at the thieves' end \\
+		or 2) the deque is seen empty
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] (model_1.south) ;
+		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] ([xshift=1cm]model_2.south) ;
+	\end{tikzpicture}
+}
+\end{frame}
