@@ -1,0 +1,79 @@
+\begin{frame}[fragile]{Implementation --- \texttt{chaselev\_make}}
+\begin{Verbatim}[commandchars=\\\{\}]
+let chaselev_make _ =
+  let t = AllocN 4 () in
+  t.front <- 0 ;
+  t.back <- 0 ;
+  t.data <- inf_array_make () ;
+  \textcolor{blue}{t.prophecy <- NewProph ;}
+  t
+\end{Verbatim}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}[fragile]{Implementation --- \texttt{chaselev\_push}}
+\begin{Verbatim}[commandchars=\\\{\}]
+let chaselev_push t v =
+  let back = !t.back in
+  inf_array_set !t.data back v ;
+  t.back <- back + 1
+\end{Verbatim}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}[fragile]{Implementation --- \texttt{chaselev\_steal}}
+\small
+\begin{Verbatim}[commandchars=\\\{\}]
+let rec chaselev_steal t =
+  \textcolor{blue}{let id = NewId in}
+  let front = !t.front in
+  let back = !t.back in
+  if front < back then (
+    if Snd (
+      \textcolor{blue}{Resolve} (
+        CmpXchg t.front front (front + 1)
+       ) \textcolor{blue}{!t.prophecy (front, id)}
+    ) then (
+      SOME (inf_array_get !t.data front)
+    ) else (
+      chaselev_steal t
+    )
+  ) else (
+    NONE
+  )
+\end{Verbatim}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}[fragile]{Implementation --- \texttt{chaselev\_pop}}
+\footnotesize
+\begin{Verbatim}[commandchars=\\\{\}]
+let chaselev_pop t =
+  \textcolor{blue}{let id = NewId in}
+  let back = !t.back - 1 in
+  t.back <- back ;
+  let front = !t.front in
+  if back < front then (
+    t.back <- front
+  ) else (
+    if front < back then (
+      SOME (inf_array_get !t.data back)
+    ) else (
+      if Snd (
+        \textcolor{blue}{Resolve} (
+          CmpXchg t.front front (front + 1)
+        ) \textcolor{blue}{!t.prophecy (front, id)}
+      ) then (
+        t.back <- front + 1 ;
+        SOME (inf_array_get !t.data back)
+      ) else (
+        t.back <- front + 1 ;
+        NONE
+      )
+    )
+  )
+\end{Verbatim}
+\end{frame}

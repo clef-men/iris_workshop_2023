@@ -8,13 +8,10 @@
 
 % ---------------------------------------------------------
 
-\AtBeginSection[]{
-	\begin{frame}
-		\tableofcontents[currentsection]
-	\end{frame}
-}
+\usepackage{appendixnumberbeamer}
 
 \setbeamertemplate{navigation symbols}{}
+
 \addtobeamertemplate{footline}{%
 	\hspace*{\fill}%
 	\llap{%
@@ -23,10 +20,6 @@
 	}
 	\vskip4pt%
 }
-
-\setbeamertemplate{blocks}[rounded][shadow]
-
-\usepackage{appendixnumberbeamer}
 
 % ---------------------------------------------------------
 
@@ -121,6 +114,12 @@
 	Thank you for your attention!
 \end{center}
 \end{frame}
+
+% ---------------------------------------------------------
+
+\appendix
+\input{code}
+\input{proof}
 
 % ---------------------------------------------------------
 

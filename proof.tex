@@ -1,0 +1,183 @@
+\begin{frame}{Invariant}
+\begin{align*}
+		&\mathrm{chaselev \mathhyphen inv}\ t\ \iota
+		\eqdef
+	\\
+		&\begin{array}{l}
+				\exists \ell, \gamma, data, p \cdot \phantom{}
+			\\
+				\iBigsep\left[\begin{array}{l}
+						t = \ell \iSep
+						\mathrm{meta}\ \ell\ \gamma
+					\\
+						\ell\mathrm{.data} \mapsto_\square data \iSep
+						\ell\mathrm{.prophecy} \mapsto_\square p
+					\\
+						\iInv{\iota}{\mathrm{chaselev \mathhyphen inv \mathhyphen inner}\ \ell\ \gamma\ \iota\ data\ p}
+				\end{array}\right.
+		\end{array}
+\end{align*}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{Invariant}
+\begin{align*}
+		&\mathrm{chaselev \mathhyphen inv \mathhyphen inner}\ \ell\ \gamma\ \iota\ data\ p
+		\eqdef
+	\\
+		&\begin{array}{l}
+				\exists front, back, hist, pub, priv, past, prophs \cdot \phantom{}
+			\\
+				\iBigsep\left[\begin{array}{l}
+						\ell\mathrm{.front} \mapsto front \iSep
+						\ell\mathrm{.back} \mapsto back
+					\\
+						\iGhost{\gamma\mathrm{.ctl}}{\iAuth{(back, priv)}}
+					\\
+						\iGhost{\gamma\mathrm{.front}}{\iAuth{front}}
+					\\
+						\mathrm{inf \mathhyphen array \mathhyphen model}\ data\ (hist \mdoubleplus pub)\ priv
+					\\
+						\iGhost{\gamma\mathrm{.pub}}{\iAuth{pub}} \iSep
+						| pub | = (back - front)_+
+					\\
+						\mathrm{wise \mathhyphen prophet \mathhyphen model}\ p\ \gamma\mathrm{.prophet}\ past\ prophs
+					\\
+						\forall (front', \_) \in past \cdot front' < front
+					\\
+						\mathrm{chaselev \mathhyphen state}\ \gamma\ \iota\ front\ back\ hist\ pub\ prophs
+				\end{array}\right.
+		\end{array}
+\end{align*}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{State}
+\small
+\begin{align*}
+		&\mathrm{chaselev \mathhyphen state}\ \gamma\ \iota\ front\ back\ hist\ pub\ prophs
+		\eqdef
+	\\
+		&\bigvee\left[\begin{array}{l}
+				\mathrm{chaselev \mathhyphen state_1}\ \gamma\ front\ back\ hist
+			\\
+				\mathrm{chaselev \mathhyphen state_2}\ \gamma\ \iota\ front\ back\ hist\ pub\ prophs
+			\\
+				\mathrm{chaselev \mathhyphen lock}\ \gamma \iSep
+				\bigvee\left[\begin{array}{l}
+						\mathrm{chaselev \mathhyphen state_{3,1}}\ \gamma\ front\ back\ hist\ prophs
+					\\
+						\mathrm{chaselev \mathhyphen state_{3,2}}\ \gamma\ front\ back\ hist
+				\end{array}\right.
+		\end{array}\right.
+\end{align*}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{State}
+\begin{align*}
+		&\mathrm{chaselev \mathhyphen state_1}\ \gamma\ front\ back\ hist
+		\eqdef
+	\\
+		&\iBigsep\left[\begin{array}{l}
+				front = back
+			\\
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{hist}} \iSep
+				| hist | = front
+			\\
+				\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \cdot \iFrag{-}}
+		\end{array}\right.
+\end{align*}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{State}
+\small
+\begin{align*}
+		&\mathrm{chaselev \mathhyphen state_2}\ \gamma\ \iota\ front\ back\ hist\ pub\ prophs
+		\eqdef
+	\\
+		&\iBigsep\left[\begin{array}{l}
+				front < back
+			\\
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{(hist \mdoubleplus [pub [0]])}} \iSep
+				| hist | = front
+			\\\\
+				\begin{array}{l}
+						\bold{match}\ \mathrm{filter}\ (\lambda (front', \_) \cdot front' = front)\ prophs\ \bold{with}
+					\\
+						|\ [] \Rightarrow
+						\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \cdot \iFrag{-}}
+					\\
+						|\ (\_, id) :: \_ \Rightarrow
+					\\
+						\ \ 
+						\bigvee\left[\begin{array}{l}
+								\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \cdot \iFrag{-}}
+							\\
+								\mathrm{identifier}\ id \iSep
+								\exists \Phi \cdot
+								\iGhost{\gamma\mathrm{.winner}}{\iAuth{(front, \Phi)}} \iSep
+								\mathrm{chaselev \mathhyphen au}\ \gamma\ \iota\ \Phi
+						\end{array}\right.
+				\end{array}
+		\end{array}\right.
+\end{align*}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{State}
+\small
+\begin{align*}
+		&\mathrm{chaselev \mathhyphen state_{3,1}}\ \gamma\ front\ back\ hist\ prophs
+		\eqdef
+	\\
+		&\iBigsep\left[\begin{array}{l}
+				front = back
+			\\
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{hist}} \iSep
+				| hist | = front + 1
+			\\\\
+				\begin{array}{l}
+						\bold{match}\ \mathrm{filter}\ (\lambda (front', \_) \cdot front' = front)\ prophs\ \bold{with}
+					\\
+						|\ [] \Rightarrow
+						\iGhost{\gamma\mathrm{.winner}}{\iFrag{(front, -)}}
+					\\
+						|\ (\_, id) :: \_ \Rightarrow
+						\exists \Phi \cdot
+						\iGhost{\gamma\mathrm{.winner}}{\iAuth{(front, \Phi)}} \iSep
+						\Phi (\exprSome{hist [front]})
+				\end{array}
+		\end{array}\right.
+\end{align*}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{State}
+\begin{align*}
+		&\mathrm{chaselev \mathhyphen state_{3,2}}\ \gamma\ front\ back\ hist
+		\eqdef
+	\\
+		&\iBigsep\left[\begin{array}{l}
+				front = back + 1
+			\\
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{hist}} \iSep
+				| hist | = front
+			\\
+				\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \cdot \iFrag{-}}
+		\end{array}\right.
+\end{align*}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{Prophecy variable with memory}
+TODO
+\end{frame}
