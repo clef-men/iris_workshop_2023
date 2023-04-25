@@ -188,9 +188,9 @@
    }
    
    \only<2->{
-	   \draw[thick, ->] (s1) to[bend left] node[above] {put} (s2) ;
+	   \draw[thick, ->] (s1) to[bend left] node[above] {push} (s2) ;
 	   \draw[thick, ->] (s2) to[bend left] node[below] {steal} (s1) ;
-	   \draw[thick, ->] (s2) to[looseness=3, out=135, in=45] node[above] {put, pop, steal} (s2) ;
+	   \draw[thick, ->] (s2) to[looseness=3, out=135, in=45] node[above] {push, pop, steal} (s2) ;
    }
    \only<4->{
 	   \draw[thick, ->] (s2) to[bend left] node[right] {pop} (s3) ;
