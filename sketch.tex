@@ -196,7 +196,9 @@
 	   \draw[thick, ->] (s2) to[bend left] node[right] {pop} (s3) ;
 	   \draw[thick, ->] (s3) to[bend left] node[below] {pop, steal} (s4) ;
 	   \draw[thick, ->] (s4) to[bend left] node[left] {pop} (s1) ;
-	   \draw[thick, ->] (s1) to[bend left] node[right] {pop} (s4) ;
+   }
+   \only<5->{
+   		\draw[thick, ->] (s1) to[bend left] node[right] {pop} (s4) ;
    }
 \end{tikzpicture}
 \end{frame}
