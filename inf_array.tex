@@ -1,0 +1,41 @@
+\begin{frame}{Infinite array}
+\[
+	\begin{array}{c}
+			\triplePretty{
+				\iTrue
+			}{
+				\texttt{inf\_array\_make}\ v
+			}{
+				\lambda\ arr \cdot \mathrm{inf \mathhyphen array \mathhyphen model}\ arr\ (\lambda \_ \cdot v)
+			}
+		\\\\\\
+			\atriplePretty{
+				vs
+			}{
+				\mathrm{inf \mathhyphen array \mathhyphen model}\ arr\ vs \iSep
+				0 \leq i
+			}{
+				\texttt{inf\_array\_get}\ arr\ i
+			}{
+			}{
+				(vs i)
+			}{
+				\mathrm{inf \mathhyphen array \mathhyphen model}\ arr\ vs
+			}
+		\\\\\\
+			\atriplePretty{
+				vs
+			}{
+				\mathrm{inf \mathhyphen array \mathhyphen model}\ arr\ vs \iSep
+				0 \leq i
+			}{
+				\texttt{inf\_array\_set}\ arr\ i\ v
+			}{
+			}{
+				\_
+			}{
+				\mathrm{inf \mathhyphen array \mathhyphen model}\ arr\ vs [i \mapsto v]
+			}
+	\end{array}
+\]
+\end{frame}
