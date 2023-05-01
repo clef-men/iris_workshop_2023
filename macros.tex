@@ -12,6 +12,10 @@
 \newcommand{\Coq}{\textsc{Coq}\xspace}
 \newcommand{\Iris}{\textsc{Iris}\xspace}
 
+\newcommand{\weakestpre}[2]{%
+	\mathrm{WP}\ #1\ \left\lbrace\, #2 \,\right\rbrace%
+}
+
 \newcommand{\triple}[3]{%
 	\left\lbrace\, #1 \,\right\rbrace\ %
 	#2\ %
@@ -79,7 +83,7 @@
 \newcommand{\iFalse}{\mathrm{False}}
 \newcommand{\iSep}{\ast}
 \newcommand{\iBigsep}{\bigast}
-\newcommand{\iSepimp}{\mathrel{-\mkern-6mu\sep}}
+\newcommand{\iSepimp}{\mathrel{-\mkern-6mu\iSep}}
 \newcommand{\iBupd}{|\!\!\!\Rrightarrow}
 \newcommand{\iPers}{\square}
 \newcommand{\iAuth}[1]{\bullet\,#1}

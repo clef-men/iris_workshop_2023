@@ -1,0 +1,110 @@
+\begin{frame}{Prophecy variable}
+\[
+	\begin{array}{c}
+			\triple{
+				\iTrue
+			}{
+				\texttt{NewProph}
+			}{
+				\lambda\ p \cdot
+				\exists prophs \cdot
+				\textcolor{blue}{\mathrm{proph}\ p\ prophs}
+			}
+		\\\\\\
+			\inferrule*
+				{
+					\mathrm{atomic}\ e
+				\\\\
+					\textcolor{blue}{\mathrm{proph}\ p\ prophs}
+				\\\\
+					\weakestpre{
+						e
+					}{
+						\begin{array}{l}
+								\lambda w \cdot
+								\forall prophs' \cdot
+							\\
+								\textcolor{red}{prophs = (w, v) :: prophs'} \iSepimp
+							\\
+								\textcolor{blue}{\mathrm{proph}\ p\ prophs'} \iSepimp
+							\\
+								\Phi\ w
+						\end{array}
+					}
+				}{
+					\weakestpre{
+						\texttt{Resolve}\ e\ p\ v
+					}{
+						\Phi
+					}
+				}
+	\end{array}
+\]
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}[fragile]{Prophecy variable in RDCSS}
+\begin{Verbatim}[commandchars=\\\{\}]
+let rdcss rm rn m1 n1 n2 =
+  \textcolor{blue}{let p = NewProph in}
+  let descr = ref (rm, m1, n1, n2, p) in
+  ...
+\end{Verbatim}
+\vfill
+\begin{Verbatim}[commandchars=\\\{\}]
+let complete descr rn =
+  let (rm, m1, n1, n2, p) = !descr in
+  \textcolor{blue}{let id = NewId in}
+  let m = !rm in
+  let n_new = if m = m1 then n2 else n1 in
+  \textcolor{blue}{Resolve} (CmpXchg rn (inr descr) (inl n_new)) \textcolor{blue}{p id} ;
+  ()
+\end{Verbatim}
+\end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{Prophecy variable with memory}
+\[
+	\begin{array}{c}
+			\triple{
+				\iTrue
+			}{
+				\texttt{NewProph}
+			}{
+				\lambda\ p \cdot
+				\exists \textcolor{teal}{\gamma}, prophs \cdot
+				\textcolor{blue}{\mathrm{proph}\ p\ \textcolor{teal}{\gamma\ []}\ prophs}
+			}
+		\\\\\\
+			\inferrule*
+				{
+					\mathrm{atomic}\ e
+				\\\\
+					\textcolor{blue}{\mathrm{proph}\ p\ \textcolor{teal}{\gamma\ past}\ prophs}
+				\\\\
+					\weakestpre{
+						e
+					}{
+						\begin{array}{l}
+								\lambda w \cdot
+								\forall prophs' \cdot
+							\\
+								\textcolor{red}{prophs = (w, v) :: prophs'} \iSepimp
+							\\
+								\textcolor{blue}{\mathrm{proph}\ p\ \textcolor{teal}{\gamma\ (past \mdoubleplus [(w, v)])}\ prophs'} \iSepimp
+							\\
+								\Phi\ w
+						\end{array}
+					}
+				}{
+					\weakestpre{
+						\texttt{Resolve}\ e\ p\ v
+					}{
+						\Phi
+					}
+				}
+	\end{array}
+\]
+\end{frame}
