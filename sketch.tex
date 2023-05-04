@@ -59,55 +59,55 @@
 \end{itemize}
 \begin{overbox}<3>
 	\begin{mathpar}
+		\inferrule*[lab=ChaselevFrontLbGet]
+			{
+				\iGhost{\gamma\mathrm{.front}}{\iAuth{\textcolor{blue}{front}}}
+			}{
+				\iGhost{\gamma\mathrm{.front}}{\iFrag{\textcolor{blue}{front}}}
+			}
+		\and
 		\inferrule*[lab=ChaselevFrontValid]
 			{
-				\iGhost{\gamma\mathrm{.front}}{\iAuth{front_1}}
+				\iGhost{\gamma\mathrm{.front}}{\iAuth{\textcolor{blue}{front_1}}}
 			\and
-				\iGhost{\gamma\mathrm{.front}}{\iFrag{front_2}}
+				\iGhost{\gamma\mathrm{.front}}{\iFrag{\textcolor{red}{front_2}}}
 			}{
-				front2 \leq front1
+				\textcolor{red}{front_2} \leq \textcolor{blue}{front_1}
 			}
 		\and
 		\inferrule*[lab=ChaselevFrontUpdate]
 			{
-				front \leq front'
+				\textcolor{blue}{front} \leq \textcolor{red}{front'}
 			\and
-				\iGhost{\gamma\mathrm{.front}}{\iAuth{front}}
+				\iGhost{\gamma\mathrm{.front}}{\iAuth{\textcolor{blue}{front}}}
 			}{
-				\iGhost{\gamma\mathrm{.front}}{\iAuth{front'}}
-			}
-		\and
-		\inferrule*[lab=ChaselevFrontFragGet]
-			{
-				\iGhost{\gamma\mathrm{.front}}{\iAuth{front}}
-			}{
-				\iGhost{\gamma\mathrm{.front}}{\iFrag{front}}
+				\iGhost{\gamma\mathrm{.front}}{\iAuth{\textcolor{red}{front'}}}
 			}
 	\end{mathpar}
 \end{overbox}
 \begin{overbox}<8>
 	\begin{mathpar}
+		\inferrule*[lab=ChaselevHistLbGet]
+			{
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{\textcolor{blue}{hist}}}
+			}{
+				\iGhost{\gamma\mathrm{.hist}}{\iFrag{\textcolor{blue}{hist}}}
+			}
+		\and
 		\inferrule*[lab=ChaselevHistValid]
 			{
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{hist_1}}
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{\textcolor{blue}{hist_1}}}
 			\and
-				\iGhost{\gamma\mathrm{.hist}}{\iFrag{hist_2}}
+				\iGhost{\gamma\mathrm{.hist}}{\iFrag{\textcolor{red}{hist_2}}}
 			}{
-				hist_2 \sqsubseteq_\mathrm{prefix} hist_1
+				\textcolor{red}{hist_2} \sqsubseteq_\mathrm{prefix} \textcolor{blue}{hist_1}
 			}
 		\and
 		\inferrule*[lab=ChaselevHistUpdate]
 			{
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{hist}}
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{\textcolor{blue}{hist}}}
 			}{
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{(hist \mdoubleplus [v])}}
-			}
-		\and
-		\inferrule*[lab=ChaselevHistFragGet]
-			{
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{hist}}
-			}{
-				\iGhost{\gamma\mathrm{.hist}}{\iFrag{hist}}
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{(\textcolor{blue}{hist} \mdoubleplus [v])}}
 			}
 	\end{mathpar}
 \end{overbox}
@@ -194,11 +194,24 @@
    }
    \only<4->{
 	   \draw[thick, ->] (s2) to[bend left] node[right] {pop} (s3) ;
-	   \draw[thick, ->] (s3) to[bend left] node[below] {pop, steal} (s4) ;
-	   \draw[thick, ->] (s4) to[bend left] node[left] {pop} (s1) ;
+	   \draw[thick, dotted, ->] (s3) to[bend left] node[below] {pop, steal} (s4) ;
+	   \draw[thick, dotted, ->] (s4) to[bend left] node[left] {pop} (s1) ;
    }
    \only<5->{
    		\draw[thick, ->] (s1) to[bend left] node[right] {pop} (s4) ;
+   		\draw[thick, dotted, ->] ([xshift=2mm]s1.south) to[bend left] ([xshift=2mm]s4.north) ;
+   }
+   
+   \only<2-3>{
+	   \matrix [below right, nodes={font=\tiny}] at (current bounding box.south west) {
+	   		\draw[thick, ->] (0, 0) -- (1em, 0) node[right] {linearization} ; \\
+	   } ;
+   }
+   \only<4->{
+	   \matrix [right, nodes={font=\tiny}] at (current bounding box.south west) {
+	   		\draw[thick, ->] (0, 0) -- (1em, 0) node[right] {linearization} ; \\
+	   		\draw[thick, dotted, ->] (0, 0) -- (1em, 0) node[right] {regularization} ; \\
+	   } ;
    }
 \end{tikzpicture}
 \end{frame}

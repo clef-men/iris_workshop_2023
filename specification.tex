@@ -160,7 +160,7 @@
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] (owner_1.south) ;
-		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] (owner_2.south) ;
+		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] ([xshift=5mm]owner_2.south) ;
 	\end{tikzpicture}
 }
 \only<5>{
@@ -229,7 +229,7 @@
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] (owner_1.south) ;
-		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] (owner_2.south) ;
+		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] ([xshift=5mm]owner_2.south) ;
 	\end{tikzpicture}
 }
 \only<3>{
