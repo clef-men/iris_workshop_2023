@@ -108,3 +108,30 @@ let complete descr rn =
 	\end{array}
 \]
 \end{frame}
+
+% ---------------------------------------------------------
+
+\begin{frame}{Prophecy variable with memory}
+\begin{mathpar}
+	\inferrule*[lab=ProphecyLbGet]
+		{
+			\mathrm{proph}\ p\ \gamma\ past\ \textcolor{blue}{prophs}
+		}{
+			\mathrm{proph \mathhyphen lb}\ \gamma\ \textcolor{blue}{prophs}
+		}
+	\\\\
+	\inferrule*[lab=ProphecyValid]
+		{
+			\mathrm{proph}\ p\ \gamma\ \textcolor{red}{past}\ \textcolor{blue}{prophs_1}
+		\and
+			\mathrm{proph \mathhyphen lb}\ \gamma\ \textcolor{teal}{prophs_2}
+		}{
+			\exists \textcolor{purple}{past_1}, \textcolor{orange}{past_2} \cdot
+			{\bigwedge\left[\begin{array}{rcl}
+					\textcolor{red}{past} = \textcolor{purple}{past_1} \mdoubleplus & \textcolor{orange}{past_2} &
+				\\
+					& \textcolor{orange}{past_2} & \mdoubleplus\, \textcolor{blue}{prophs_1} = \textcolor{teal}{prophs_2}
+			\end{array}\right.}
+		}
+\end{mathpar}
+\end{frame}
