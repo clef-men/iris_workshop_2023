@@ -27,7 +27,7 @@
 		\eqdef
 	\\
 		&\begin{array}{l}
-				\exists front, back, hist, pub, priv, past, prophs \cdot \phantom{}
+				\exists front, back, hist, model, priv, past, prophs \cdot \phantom{}
 			\\
 				\iBigsep\left[\begin{array}{l}
 						\ell\mathrm{.front} \mapsto front \iSep
@@ -37,16 +37,16 @@
 					\\
 						\iGhost{\gamma\mathrm{.front}}{\iAuth{front}}
 					\\
-						\mathrm{inf \mathhyphen array \mathhyphen model}\ data\ (hist \mdoubleplus pub)\ priv
+						\mathrm{inf \mathhyphen array \mathhyphen model}\ data\ (hist \mdoubleplus model)\ priv
 					\\
-						\iGhost{\gamma\mathrm{.pub}}{\iAuth{pub}} \iSep
-						| pub | = (back - front)_+
+						\iGhost{\gamma\mathrm{.model}}{\iAuth{model}} \iSep
+						| model | = (back - front)_+
 					\\
 						\mathrm{wise \mathhyphen prophet \mathhyphen model}\ p\ \gamma\mathrm{.prophet}\ past\ prophs
 					\\
 						\forall (front', \_) \in past \cdot front' < front
 					\\
-						\mathrm{chaselev \mathhyphen state}\ \gamma\ \iota\ front\ back\ hist\ pub\ prophs
+						\mathrm{chaselev \mathhyphen state}\ \gamma\ \iota\ front\ back\ hist\ model\ prophs
 				\end{array}\right.
 		\end{array}
 \end{align*}

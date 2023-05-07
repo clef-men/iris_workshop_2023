@@ -1,13 +1,13 @@
 \begin{frame}{State}
 \small
 \begin{align*}
-		&\mathrm{chaselev \mathhyphen state}\ \gamma\ \iota\ front\ back\ hist\ pub\ prophs
+		&\mathrm{chaselev \mathhyphen state}\ \gamma\ \iota\ front\ back\ hist\ model\ prophs
 		\eqdef
 	\\
 		&\bigvee\left[\begin{array}{l}
 				\mathrm{chaselev \mathhyphen state_1}\ \gamma\ front\ back\ hist
 			\\
-				\mathrm{chaselev \mathhyphen state_2}\ \gamma\ \iota\ front\ back\ hist\ pub\ prophs
+				\mathrm{chaselev \mathhyphen state_2}\ \gamma\ \iota\ front\ back\ hist\ model\ prophs
 			\\
 				\mathrm{chaselev \mathhyphen lock}\ \gamma \iSep
 				\bigvee\left[\begin{array}{l}
@@ -42,13 +42,13 @@
 \begin{frame}{State 2 (non-empty)}
 \small
 \begin{align*}
-		&\mathrm{chaselev \mathhyphen state_2}\ \gamma\ \iota\ front\ back\ hist\ pub\ prophs
+		&\mathrm{chaselev \mathhyphen state_2}\ \gamma\ \iota\ front\ back\ hist\ model\ prophs
 		\eqdef
 	\\
 		&\iBigsep\left[\begin{array}{l}
 				front < back
 			\\
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{(hist \mdoubleplus [pub [0]])}} \iSep
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{(hist \mdoubleplus [model [0]])}} \iSep
 				| hist | = front
 			\\\\
 				\begin{array}{l}

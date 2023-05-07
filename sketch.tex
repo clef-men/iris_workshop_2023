@@ -4,11 +4,11 @@
 \begin{tikzpicture}[scale=1.15]
 	\def\hist{2}
 	\def\histext{1}
-	\def\pub{3}
+	\def\model{3}
 	\def\priv{2.8}
 	
 	\only<1->{
-		\draw[step=1cm, gray, thin] (0, 0) grid (\hist + \pub + \priv, 1) ;
+		\draw[step=1cm, gray, thin] (0, 0) grid (\hist + \model + \priv, 1) ;
 		\draw[decorate, decoration={brace, amplitude=5pt}] (-0.2, 0) -- (-0.2, 1) node [midway, xshift=-7mm] {data} ;
 	}
 	
@@ -17,17 +17,17 @@
 	}
 	
 	\only<4->{
-		\draw[very thick] (\hist + \pub, 0) -- (\hist + \pub, 1) node[label=above:back] {} ;
+		\draw[very thick] (\hist + \model, 0) -- (\hist + \model, 1) node[label=above:back] {} ;
 	}
 	
 	\only<5->{
-		\fill[red, opacity=0.2] (\hist + \pub, 0) rectangle (\hist + \pub + \priv, 1) ;
-		\draw[decorate, decoration={brace, amplitude=5pt}] (\hist + \pub + \priv, -0.2) -- (\hist + \pub, -0.2) node [midway, yshift=-5mm] {priv} ;
+		\fill[red, opacity=0.2] (\hist + \model, 0) rectangle (\hist + \model + \priv, 1) ;
+		\draw[decorate, decoration={brace, amplitude=5pt}] (\hist + \model + \priv, -0.2) -- (\hist + \model, -0.2) node [midway, yshift=-5mm] {priv} ;
 	}
 	
 	\only<6->{
-		\fill[green, opacity=0.2] (\hist, 0) rectangle (\hist + \pub, 1) ;
-		\draw[decorate, decoration={brace, amplitude=5pt}] (\hist + \pub, -0.2) -- (\hist, -0.2) node [midway, yshift=-5mm] {pub} ;
+		\fill[green, opacity=0.2] (\hist, 0) rectangle (\hist + \model, 1) ;
+		\draw[decorate, decoration={brace, amplitude=5pt}] (\hist + \model, -0.2) -- (\hist, -0.2) node [midway, yshift=-5mm] {model} ;
 	}
 	\only<7->{
 		\fill[blue, opacity=0.2] (0,0) rectangle (\hist, 1) ;
@@ -41,8 +41,8 @@
 	
 	\only<10->{
 		\draw[thick, ->, blue] (\hist, 0.5) -- (\hist + 1, 0.5) node[label=below left:{\footnotesize\texttt{steal}}] {} ;
-		\draw[thick, ->, teal] (\hist + \pub, 0.5) -- (\hist + \pub - 1, 0.5) node[label=below right:{\footnotesize\texttt{pop}}] {} ;
-		\draw[thick, ->, red] (\hist + \pub, 0.5) -- (\hist + \pub + 1, 0.5) node[label=below left:{\footnotesize\texttt{push}}] {} ;
+		\draw[thick, ->, teal] (\hist + \model, 0.5) -- (\hist + \model - 1, 0.5) node[label=below right:{\footnotesize\texttt{pop}}] {} ;
+		\draw[thick, ->, red] (\hist + \model, 0.5) -- (\hist + \model + 1, 0.5) node[label=below left:{\footnotesize\texttt{push}}] {} ;
 	}
 \end{tikzpicture}
 \vfill
@@ -53,7 +53,7 @@
 \end{itemize}
 \begin{itemize}
 	\item[priv:]<5-> list of private values (controlled by owner)
-	\item[pub:]<6-> list of public values (= model)
+	\item[model:]<6-> list of contained values
 	\item[hist:]<7-> \emph{monotone} list of history values
 	\item[hist\textsubscript{+}:]<9-> \emph{monotone} list of extended history values
 \end{itemize}
@@ -141,16 +141,16 @@
 			\begin{tikzpicture}[scale=0.5]
 				\def\hist{2}
 				\def\histext{1}
-				\def\pub{3}
+				\def\model{3}
 				\def\priv{1.8}
 		
-				\draw[step=1cm, gray, thin] (0, 0) grid (\hist + \pub + \priv, 1) ;
+				\draw[step=1cm, gray, thin] (0, 0) grid (\hist + \model + \priv, 1) ;
 				
 				\fill[blue, opacity=0.2] (0, 0) rectangle (\hist + \histext, 1) ;
 				\draw[very thick] (\hist, 1) -- (\hist, 0) node[yshift=2mm, label=below:{\tiny front}] {} ;
-				\fill[green, opacity=0.2] (\hist, 0) rectangle (\hist + \pub, 1) ;
-				\draw[very thick] (\hist + \pub, 1) -- (\hist + \pub, 0) node[yshift=2mm, label=below:{\tiny back}] {} ;
-				\fill[red, opacity=0.2] (\hist + \pub, 0) rectangle (\hist + \pub + \priv, 1) ;
+				\fill[green, opacity=0.2] (\hist, 0) rectangle (\hist + \model, 1) ;
+				\draw[very thick] (\hist + \model, 1) -- (\hist + \model, 0) node[yshift=2mm, label=below:{\tiny back}] {} ;
+				\fill[red, opacity=0.2] (\hist + \model, 0) rectangle (\hist + \model + \priv, 1) ;
 			\end{tikzpicture}
 	   } ;
    }
