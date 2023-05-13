@@ -22,7 +22,8 @@
 \vfill
 \only<2>{
 	\tikz[remember picture] \node[align=left] (inv_2) {
-		enforces a protocol (using an Iris invariant)
+		$t$ is an instance of Chase-Lev deque. \\
+		Enforces a protocol (using an Iris invariant).
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=blue, thick, ->] (inv_2.north) to [out=100, in=-100] (inv_1.south) ;
@@ -30,7 +31,7 @@
 }
 \only<3>{
 	\tikz[remember picture] \node[align=left] (model_2) {
-		asserts the list of values that the deque (logically) contains
+		Asserts the list of values that $t$ logically contains.
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=red, thick, ->] (model_2.north) to [out=100, in=-100] (model_1.south) ;
@@ -38,7 +39,7 @@
 }
 \only<4>{
 	\tikz[remember picture] \node[align=left] (owner_2) {
-		gives the owner exclusive access to his end of the deque
+		Gives the owner exclusive access to his end of $t$.
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=teal, thick, ->] (owner_2.north) to [out=100, in=-100] (owner_1.south) ;
@@ -155,17 +156,25 @@
 \end{overbox}
 \vfill
 \only<4>{
+	\tikz[remember picture] \node[align=left] (inv_2) {
+		$t$ is an instance of Chase-Lev deque.
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=blue, thick, ->] (inv_2.north) to [out=100, in=-100] (inv_1.south) ;
+	\end{tikzpicture}
+}
+\only<5>{
 	\tikz[remember picture] \node[align=left] (owner_3) {
-		owner's operation
+		This operation is reserved to the owner of $t$.
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] (owner_1.south) ;
 		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] ([xshift=5mm]owner_2.south) ;
 	\end{tikzpicture}
 }
-\only<5>{
+\only<6>{
 	\tikz[remember picture] \node[align=left] (model_3) {
-		$v$ is atomically pushed at the owner's end
+		$v$ is atomically pushed at the owner's end of $t$.
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] (model_1.south) ;
@@ -224,18 +233,26 @@
 \]
 \vfill
 \only<2>{
+	\tikz[remember picture] \node[align=left] (inv_2) {
+		$t$ is an instance of Chase-Lev deque.
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=blue, thick, ->] (inv_2.north) to [out=100, in=-100] (inv_1.south) ;
+	\end{tikzpicture}
+}
+\only<3>{
 	\tikz[remember picture] \node[align=left] (owner_3) {
-		owner's operation
+		This operation is reserved to the owner of $t$.
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] (owner_1.south) ;
 		\path[draw=red, thick, ->] (owner_3.north) to [out=100, in=-100] ([xshift=5mm]owner_2.south) ;
 	\end{tikzpicture}
 }
-\only<3>{
+\only<4>{
 	\tikz[remember picture] \node[align=left] (model_3) {
-		either 1) the deque is seen empty \\
-		or 2) some value $v$ is atomically popped at the owner's end
+		Either 1) $t$ is seen empty \\
+		or 2) some value $v$ is atomically popped at the owner's end of $t$.
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] (model_1.south) ;
@@ -289,9 +306,17 @@
 \]
 \vfill
 \only<2>{
+	\tikz[remember picture] \node[align=left] (inv_2) {
+		$t$ is an instance of Chase-Lev deque.
+	} ;
+	\begin{tikzpicture}[remember picture, overlay]
+		\path[draw=blue, thick, ->] (inv_2.north) to [out=100, in=-100] (inv_1.south) ;
+	\end{tikzpicture}
+}
+\only<3>{
 	\tikz[remember picture] \node[align=left] (model_3) {
-		either 1) the deque is seen empty \\
-		or 2) some value $v$ is atomically popped at the thieves' end
+		Either 1) $t$ is seen empty \\
+		or 2) some value $v$ is atomically popped at the thieves' end of $t$.
 	} ;
 	\begin{tikzpicture}[remember picture, overlay]
 		\path[draw=teal, thick, ->] (model_3.north) to [out=100, in=-100] (model_1.south) ;
