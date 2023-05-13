@@ -8,7 +8,7 @@
 	\def\priv{2.8}
 	
 	\only<1->{
-		\draw[step=1cm, gray, thin] (0, 0) grid (\hist + \model + \priv, 1) ;
+		\draw[step=1cm, gray] (0, 0) grid (\hist + \model + \priv, 1) ;
 		\draw[decorate, decoration={brace, amplitude=5pt}] (-0.2, 0) -- (-0.2, 1) node [midway, xshift=-7mm] {data} ;
 	}
 	
@@ -128,7 +128,7 @@
 				\def\hist{2}
 				\def\priv{2.8}
 		
-				\draw[step=1cm, gray, thin] (0, 0) grid (\hist + \priv, 1) ;
+				\draw[step=1cm, gray] (0, 0) grid (\hist + \priv, 1) ;
 				
 				\fill[blue, opacity=0.2] (0, 0) rectangle (\hist, 1) ;
 				\draw[very thick] (\hist, 1) -- (\hist, 0) node[yshift=2mm, label=below:{\tiny front = back}] {} ;
@@ -144,7 +144,7 @@
 				\def\model{3}
 				\def\priv{1.8}
 		
-				\draw[step=1cm, gray, thin] (0, 0) grid (\hist + \model + \priv, 1) ;
+				\draw[step=1cm, gray] (0, 0) grid (\hist + \model + \priv, 1) ;
 				
 				\fill[blue, opacity=0.2] (0, 0) rectangle (\hist + \histext, 1) ;
 				\draw[very thick] (\hist, 1) -- (\hist, 0) node[yshift=2mm, label=below:{\tiny front}] {} ;
@@ -163,7 +163,7 @@
 				\def\histext{1}
 				\def\priv{2.8}
 		
-				\draw[step=1cm, gray, thin] (0, 0) grid (\hist + \priv, 1) ;
+				\draw[step=1cm, gray] (0, 0) grid (\hist + \priv, 1) ;
 				
 				\fill[blue, opacity=0.2] (0, 0) rectangle (\hist + \histext, 1) ;
 				\draw[very thick] (\hist, 1) -- (\hist, 0) node[yshift=2mm, label=below:{\tiny front = back}] {} ;
@@ -177,7 +177,7 @@
 				\def\histext{1}
 				\def\priv{2.8}
 		
-				\draw[step=1cm, gray, thin] (0, 0) grid (\hist + \priv, 1) ;
+				\draw[step=1cm, gray] (0, 0) grid (\hist + \priv, 1) ;
 				
 				\fill[blue, opacity=0.2] (0, 0) rectangle (\hist + \histext, 1) ;
 				\draw[very thick] (\hist, 1) -- (\hist, 0) node[xshift=-2mm, yshift=2mm, label=below:{\tiny back}] {} ;
@@ -210,7 +210,7 @@
    \only<4->{
 	   \matrix [right, nodes={font=\tiny}] at (current bounding box.south west) {
 	   		\draw[thick, ->] (0, 0) -- (1em, 0) node[right] {linearization} ; \\
-	   		\draw[thick, dotted, ->] (0, 0) -- (1em, 0) node[right] {regularization} ; \\
+	   		\draw[thick, dotted, ->] (0, 0) -- (1em, 0) node[right] {stabilization} ; \\
 	   } ;
    }
 \end{tikzpicture}
