@@ -1,0 +1,17 @@
+\begin{frame}{Conclusion}
+\begin{itemize}
+	\setlength\itemsep{2em}
+	\item
+		Coq mechanization is available on \texttt{github} : \\
+		\url{https://github.com/clef-men/caml5_alienation}
+	\item
+		Simplified Chase-Lev deque (one infinite array) \hfill \ding{51} \\
+		Real-life Chase-Lev deque (multiple circular arrays) \hfill \ding{55}
+	\item
+		Proof looks more complex than the sketch.
+		In particular, transitions between logical states are not really formalized.
+	\item
+		We plan to verify more primitives (\href{https://github.com/ocaml-multicore/domainslib}{Domainslib}, \href{https://github.com/taskflow/taskflow}{Taskflow}) based on Chase-Lev deque.
+		This is thanks to modularity of \Iris specifications.
+\end{itemize}
+\end{frame}
