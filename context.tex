@@ -1,14 +1,10 @@
-\begin{frame}[fragile]{Verification of a scheduler}
-%\begin{itemize}
-%	\item domainslib (\OCaml~5)
-%	\item Taskflow (C++)
-%\end{itemize}
-%\vfill
-\begin{Verbatim}[commandchars=\\\{\}]
-let rec fib pool n =
-  if n < 2 then 1 else
-  let r1 = \textcolor{blue}{async} pool (fun () -> fib_par (n - 1)) in
-  let r2 = \textcolor{blue}{async} pool (fun () -> fib_par (n - 2)) in
-  \textcolor{blue}{await} pool r1 + \textcolor{blue}{await} pool r2
-\end{Verbatim}
+\begin{frame}[fragile]{Context: scheduler for task-based parallelism}
+\begin{itemize}
+	\item \href{https://www.opencilk.org/}{Cilk} (\C, \Cpp)
+	\item \href{https://github.com/oneapi-src/oneTBB}{Threading Building Blocks} (\Cpp)
+	\item \href{https://github.com/taskflow/taskflow}{Taskflow} (\Cpp)
+	\item \href{https://docs.rs/tokio/latest/tokio/}{Tokio} (\Rust)
+	\item \href{https://go.dev/doc/effective_go#goroutines}{Goroutines} (\Go)
+	\item \href{https://github.com/ocaml-multicore/domainslib}{\underline{Domainslib}} (\OCaml~5)
+\end{itemize}
 \end{frame}
