@@ -48,24 +48,31 @@
 
 \begin{frame}{Chase-Lev work-stealing deque}
 \begin{enumerate}
-	\item Frigo, Leiserson \& Randall (1998)
+	\item
+		\textit{The Implementation of the Cilk-5 Multithreaded Language}. \\
+		Frigo, Leiserson \& Randall (1998).
 		\begin{itemize}
-			\item at the core of Cilk~5
 			\item lock
 		\end{itemize}
-	\item Arora, Blumofe \& Plaxton (2001)
+	\item
+		\textit{Thread Scheduling for Multiprogrammed Multiprocessors}. \\
+		Arora, Blumofe \& Plaxton (1998).
 		\begin{itemize}
-			\item no lock
-			\item one fixed size array (not circular), can overflow
+			\item non-blocking
+			\item one fixed size array, potential overflow
 		\end{itemize}
-	\item Hendler, Lev \& Shavit (2004)
+	\item
+		\textit{A dynamic-sized nonblocking work stealing deque}. \\
+		Hendler, Lev, Moir, \& Shavit (2004).
 		\begin{itemize}
-			\item no lock
-			\item list of small size arrays, no overflow
+			\item non-blocking
+			\item list of small arrays, no overflow
 		\end{itemize}
-	\item \underline{Chase \& Lev (2005)}
+	\item
+		\underline{\textit{Dynamic circular work-stealing deque}}. \\
+		Chase \& Lev (2005).
 		\begin{itemize}
-			\item no lock
+			\item lockfree
 			\item circular arrays, no overflow
 		\end{itemize}
 \end{enumerate}
