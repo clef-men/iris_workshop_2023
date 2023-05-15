@@ -1,19 +1,19 @@
 \begin{frame}{State}
 \small
 \begin{align*}
-		&\mathrm{chaselev \mathhyphen state}\ \gamma\ \iota\ front\ back\ hist\ model\ prophs
+		&\mathrm{chaselev \mathhyphen state}\ \gamma\ \iota\ \mathit{front}\ \mathit{back}\ \mathit{hist}\ \mathit{model}\ \mathit{prophs}
 		\eqdef
 	\\
 		&\bigvee\left[\begin{array}{l}
-				\mathrm{chaselev \mathhyphen state_1}\ \gamma\ front\ back\ hist
+				\mathrm{chaselev \mathhyphen state_1}\ \gamma\ \mathit{front}\ \mathit{back}\ \mathit{hist}
 			\\
-				\mathrm{chaselev \mathhyphen state_2}\ \gamma\ \iota\ front\ back\ hist\ model\ prophs
+				\mathrm{chaselev \mathhyphen state_2}\ \gamma\ \iota\ \mathit{front}\ \mathit{back}\ \mathit{hist}\ \mathit{model}\ \mathit{prophs}
 			\\
 				\mathrm{chaselev \mathhyphen lock}\ \gamma \iSep
 				\bigvee\left[\begin{array}{l}
-						\mathrm{chaselev \mathhyphen state_3}\ \gamma\ front\ back\ hist\ prophs
+						\mathrm{chaselev \mathhyphen state_3}\ \gamma\ \mathit{front}\ \mathit{back}\ \mathit{hist}\ \mathit{prophs}
 					\\
-						\mathrm{chaselev \mathhyphen state_4}\ \gamma\ front\ back\ hist
+						\mathrm{chaselev \mathhyphen state_4}\ \gamma\ \mathit{front}\ \mathit{back}\ \mathit{hist}
 				\end{array}\right.
 		\end{array}\right.
 \end{align*}
@@ -23,16 +23,16 @@
 
 \begin{frame}{State 1 (empty)}
 \begin{align*}
-		&\mathrm{chaselev \mathhyphen state_1}\ \gamma\ front\ back\ hist
+		&\mathrm{chaselev \mathhyphen state_1}\ \gamma\ \mathit{front}\ \mathit{back}\ \mathit{hist}
 		\eqdef
 	\\
 		&\iBigsep\left[\begin{array}{l}
-				front = back
+				\mathit{front} = \mathit{back}
 			\\
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{hist}} \iSep
-				| hist | = front
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{\mathit{hist}}} \iSep
+				| \mathit{hist} | = \mathit{front}
 			\\
-				\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \cdot \iFrag{-}}
+				\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} .\ \iFrag{-}}
 		\end{array}\right.
 \end{align*}
 \end{frame}
@@ -42,30 +42,30 @@
 \begin{frame}{State 2 (non-empty)}
 \small
 \begin{align*}
-		&\mathrm{chaselev \mathhyphen state_2}\ \gamma\ \iota\ front\ back\ hist\ model\ prophs
+		&\mathrm{chaselev \mathhyphen state_2}\ \gamma\ \iota\ \mathit{front}\ \mathit{back}\ \mathit{hist}\ \mathit{model}\ \mathit{prophs}
 		\eqdef
 	\\
 		&\iBigsep\left[\begin{array}{l}
-				front < back
+				\mathit{front} < \mathit{back}
 			\\
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{(hist \mdoubleplus [model [0]])}} \iSep
-				| hist | = front
+				\iGhost{\gamma\mathrm{.hist}}{\iAuth{(\mathit{hist} \mdoubleplus [\mathit{model} [0]])}} \iSep
+				| \mathit{hist} | = \mathit{front}
 			\\\\
 				\begin{array}{l}
-						\bold{match}\ \mathrm{filter}\ (\lambda (front', \_) \cdot front' = front)\ prophs\ \bold{with}
+						\bold{match}\ \mathrm{filter}\ (\lambda (\mathit{front'}, \_) .\ \mathit{front'} = \mathit{front})\ \mathit{prophs}\ \bold{with}
 					\\
 						|\ [] \Rightarrow
-						\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \cdot \iFrag{-}}
+						\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} .\ \iFrag{-}}
 					\\
-						|\ (\_, id) :: \_ \Rightarrow
+						|\ (\_, \mathit{id}) :: \_ \Rightarrow
 					\\
 						\ \ 
 						\bigvee\left[\begin{array}{l}
-								\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \cdot \iFrag{-}}
+								\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} .\ \iFrag{-}}
 							\\
-								\mathrm{identifier}\ id \iSep
-								\exists \Phi \cdot
-								\iGhost{\gamma\mathrm{.winner}}{\iAuth{(front, \Phi)}} \iSep
+								\mathrm{identifier}\ \mathit{id} \iSep
+								\exists \Phi .\ 
+								\iGhost{\gamma\mathrm{.winner}}{\iAuth{(\mathit{front}, \Phi)}} \iSep
 								\mathrm{chaselev \mathhyphen au}\ \gamma\ \iota\ \Phi
 						\end{array}\right.
 				\end{array}
@@ -78,25 +78,25 @@
 \begin{frame}{State 3 (emptyish)}
 \small
 \begin{align*}
-		&\mathrm{chaselev \mathhyphen state_3}\ \gamma\ front\ back\ hist\ prophs
+		&\mathrm{chaselev \mathhyphen state_3}\ \gamma\ \mathit{front}\ \mathit{back}\ \mathit{hist}\ \mathit{prophs}
 		\eqdef
 	\\
 		&\iBigsep\left[\begin{array}{l}
-				front = back
+				\mathit{front} = \mathit{back}
 			\\
 				\iGhost{\gamma\mathrm{.hist}}{\iAuth{hist}} \iSep
-				| hist | = front + 1
+				| \mathit{hist} | = \mathit{front} + 1
 			\\\\
 				\begin{array}{l}
-						\bold{match}\ \mathrm{filter}\ (\lambda (front', \_) \cdot front' = front)\ prophs\ \bold{with}
+						\bold{match}\ \mathrm{filter}\ (\lambda (\mathit{front'}, \_) .\ \mathit{front'} = \mathit{front})\ \mathit{prophs}\ \bold{with}
 					\\
 						|\ [] \Rightarrow
-						\iGhost{\gamma\mathrm{.winner}}{\iFrag{(front, -)}}
+						\iGhost{\gamma\mathrm{.winner}}{\iFrag{(\mathit{front}, -)}}
 					\\
 						|\ \_ \Rightarrow
-						\exists \Phi \cdot
-						\iGhost{\gamma\mathrm{.winner}}{\iAuth{(front, \Phi)}} \iSep
-						\Phi (\exprSome{hist [front]})
+						\exists \Phi .\ 
+						\iGhost{\gamma\mathrm{.winner}}{\iAuth{(\mathit{front}, \Phi)}} \iSep
+						\Phi\ (\exprSome{\mathit{hist} [\mathit{front}]})
 				\end{array}
 		\end{array}\right.
 \end{align*}
@@ -106,16 +106,16 @@
 
 \begin{frame}{State 4 (super empty)}
 \begin{align*}
-		&\mathrm{chaselev \mathhyphen state_4}\ \gamma\ front\ back\ hist
+		&\mathrm{chaselev \mathhyphen state_4}\ \gamma\ \mathit{front}\ \mathit{back}\ \mathit{hist}
 		\eqdef
 	\\
 		&\iBigsep\left[\begin{array}{l}
-				front = back + 1
+				\mathit{front} = \mathit{back} + 1
 			\\
 				\iGhost{\gamma\mathrm{.hist}}{\iAuth{hist}} \iSep
-				| hist | = front
+				| \mathit{hist} | = \mathit{front}
 			\\
-				\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \cdot \iFrag{-}}
+				\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} .\ \iFrag{-}}
 		\end{array}\right.
 \end{align*}
 \end{frame}

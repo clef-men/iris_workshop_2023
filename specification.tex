@@ -9,7 +9,7 @@
 	}{
 		\texttt{chaselev\_make}\ \exprUnit
 	}{
-		\lambda\ t \cdot
+		\lambda\ t .\ 
 		\tikz[baseline, remember picture]{\node[anchor=base] (inv_1) {${
 			\textcolor{blue}{\mathrm{chaselev \mathhyphen inv}\ t\ \iota}
 		}$}} \iSep
@@ -62,10 +62,10 @@
 			\textcolor{red}{\mathrm{chaselev \mathhyphen owner}\ t}
 		}$}}
 	}{
-		vs
+		\mathit{vs}
 	}{
 		\tikz[baseline, remember picture]{\node[anchor=base] (model_1) {${
-			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ vs}
+			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ \mathit{vs}}
 		}$}}
 	}{
 		\texttt{chaselev\_push}\ t\ v
@@ -74,7 +74,7 @@
 	}{
 	}{
 		\tikz[baseline, remember picture]{\node[anchor=base] (model_2) {${
-			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ (vs \mdoubleplus [v])}
+			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ (\mathit{vs} \mdoubleplus [v])}
 		}$}}
 	}{
 		\exprUnit
@@ -199,10 +199,10 @@
 			\textcolor{red}{\mathrm{chaselev \mathhyphen owner}\ t}
 		}$}}
 	}{
-		vs
+		\mathit{vs}
 	}{
 		\tikz[baseline, remember picture]{\node[anchor=base] (model_1) {${
-			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ vs}
+			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ \mathit{vs}}
 		}$}}
 	}{
 		\texttt{chaselev\_pop}\ t
@@ -214,14 +214,14 @@
 		\tikz[baseline, remember picture]{\node[anchor=base] (model_2) {${
 			\textcolor{teal}{
 				\bigvee\left[\begin{array}{l}
-						vs = [] \iSep
+						\mathit{vs} = [] \iSep
 						o = \exprNone \iSep
 						\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ []}
 					\\
-						\exists v, vs' \cdot
-						vs = vs' \mdoubleplus [v] \iSep
+						\exists v, \mathit{vs'} .\ 
+						\mathit{vs} = \mathit{vs'} \mdoubleplus [v] \iSep
 						o = \exprSome{v} \iSep
-						\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ vs'}
+						\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ \mathit{vs'}}
 				\end{array}\right]
 			}
 		}$}}
@@ -274,10 +274,10 @@
 			\textcolor{blue}{\mathrm{chaselev \mathhyphen inv}\ t\ \iota}
 		}$}}
 	}{
-		vs
+		\mathit{vs}
 	}{
 		\tikz[baseline, remember picture]{\node[anchor=base] (model_1) {${
-			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ vs}
+			\textcolor{teal}{\mathrm{chaselev \mathhyphen model}\ t\ \mathit{vs}}
 		}$}}
 	}{
 		\texttt{chaselev\_steal}\ t
@@ -289,14 +289,14 @@
 		\tikz[baseline, remember picture]{\node[anchor=base] (model_2) {${
 			\textcolor{teal}{
 				\bigvee\left[\begin{array}{l}
-						vs = [] \iSep
+						\mathit{vs} = [] \iSep
 						o = \exprNone \iSep
 						\mathrm{chaselev \mathhyphen model}\ t\ []
 					\\
-						\exists v, vs' \cdot
-						vs = v :: vs' \iSep
+						\exists v, \mathit{vs'} .\ 
+						\mathit{vs} = v :: \mathit{vs'} \iSep
 						o = \exprSome{v} \iSep
-						\mathrm{chaselev \mathhyphen model}\ t\ vs'
+						\mathrm{chaselev \mathhyphen model}\ t\ \mathit{vs'}
 				\end{array}\right]
 			}
 		}$}}

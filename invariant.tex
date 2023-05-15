@@ -4,16 +4,16 @@
 		\eqdef
 	\\
 		&\begin{array}{l}
-				\exists \ell, \gamma, data, p \cdot \phantom{}
+				\exists \ell, \gamma, \mathit{data}, p .\ 
 			\\
 				\iBigsep\left[\begin{array}{l}
 						t = \ell \iSep
 						\mathrm{meta}\ \ell\ \gamma
 					\\
-						\ell\mathrm{.data} \mapsto_\square data \iSep
+						\ell\mathrm{.data} \mapsto_\square \mathit{data} \iSep
 						\ell\mathrm{.prophecy} \mapsto_\square p
 					\\
-						\iInv{\iota}{\mathrm{chaselev \mathhyphen inv \mathhyphen inner}\ \ell\ \gamma\ \iota\ data\ p}
+						\iInv{\iota}{\mathrm{chaselev \mathhyphen inv \mathhyphen inner}\ \ell\ \gamma\ \iota\ \mathit{data}\ p}
 				\end{array}\right.
 		\end{array}
 \end{align*}
@@ -23,30 +23,30 @@
 
 \begin{frame}{Invariant}
 \begin{align*}
-		&\mathrm{chaselev \mathhyphen inv \mathhyphen inner}\ \ell\ \gamma\ \iota\ data\ p
+		&\mathrm{chaselev \mathhyphen inv \mathhyphen inner}\ \ell\ \gamma\ \iota\ \mathit{data}\ p
 		\eqdef
 	\\
 		&\begin{array}{l}
-				\exists front, back, hist, model, priv, past, prophs \cdot \phantom{}
+				\exists \mathit{front}, \mathit{back}, \mathit{hist}, \mathit{model}, \mathit{priv}, \mathit{past}, \mathit{prophs} .\ 
 			\\
 				\iBigsep\left[\begin{array}{l}
-						\ell\mathrm{.front} \mapsto front \iSep
-						\ell\mathrm{.back} \mapsto back
+						\ell\mathrm{.front} \mapsto \mathit{front} \iSep
+						\ell\mathrm{.back} \mapsto \mathit{back}
 					\\
-						\iGhost{\gamma\mathrm{.ctl}}{\iAuth{(back, priv)}}
+						\iGhost{\gamma\mathrm{.ctl}}{\iAuth{(\mathit{back}, \mathit{priv})}}
 					\\
-						\iGhost{\gamma\mathrm{.front}}{\iAuth{front}}
+						\iGhost{\gamma\mathrm{.front}}{\iAuth{\mathit{front}}}
 					\\
-						\mathrm{inf \mathhyphen array \mathhyphen model}\ data\ (hist \mdoubleplus model)\ priv
+						\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{data}\ (\mathit{hist} \mdoubleplus \mathit{model})\ \mathit{priv}
 					\\
-						\iGhost{\gamma\mathrm{.model}}{\iAuth{model}} \iSep
-						| model | = (back - front)_+
+						\iGhost{\gamma\mathrm{.model}}{\iAuth{\mathit{model}}} \iSep
+						| \mathit{model} | = (\mathit{back} - \mathit{front})_+
 					\\
-						\mathrm{wise \mathhyphen prophet \mathhyphen model}\ p\ \gamma\mathrm{.prophet}\ past\ prophs
+						\mathrm{wise \mathhyphen prophet \mathhyphen model}\ p\ \gamma\mathrm{.prophet}\ \mathit{past}\ \mathit{prophs}
 					\\
-						\forall (front', \_) \in past \cdot front' < front
+						\forall (\mathit{front'}, \_) \in \mathit{past} .\ \mathit{front'} < \mathit{front}
 					\\
-						\mathrm{chaselev \mathhyphen state}\ \gamma\ \iota\ front\ back\ hist\ model\ prophs
+						\mathrm{chaselev \mathhyphen state}\ \gamma\ \iota\ \mathit{front}\ \mathit{back}\ \mathit{hist}\ \mathit{model}\ \mathit{prophs}
 				\end{array}\right.
 		\end{array}
 \end{align*}

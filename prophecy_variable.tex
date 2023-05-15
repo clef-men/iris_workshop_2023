@@ -12,27 +12,27 @@ Jung, Lepigre, Parthasarathy, Rapoport, Timany, Dreyer \& Jacobs (2020).
 			}{
 				\texttt{NewProph}
 			}{
-				\lambda\ p \cdot
-				\exists prophs \cdot
-				\textcolor{blue}{\mathrm{proph}\ p\ prophs}
+				\lambda\ p .\,
+				\exists prophs .\,
+				\textcolor{blue}{\mathrm{proph}\ p\ \mathit{prophs}}
 			}
 		\\\\\\
 			\inferrule*
 				{
 					\mathrm{atomic}\ e
 				\\\\
-					\textcolor{blue}{\mathrm{proph}\ p\ prophs}
+					\textcolor{blue}{\mathrm{proph}\ p\ \mathit{prophs}}
 				\\\\
 					\weakestpre{
 						e
 					}{
 						\begin{array}{l}
-								\lambda w \cdot
-								\forall prophs' \cdot
+								\lambda w .\,
+								\forall \mathit{prophs'} .\,
 							\\
-								\textcolor{red}{prophs = (w, v) :: prophs'} \iSepimp
+								\textcolor{red}{\mathit{prophs} = (w, v) :: \mathit{prophs'}} \iSepimp
 							\\
-								\textcolor{blue}{\mathrm{proph}\ p\ prophs'} \iSepimp
+								\textcolor{blue}{\mathrm{proph}\ p\ \mathit{prophs'}} \iSepimp
 							\\
 								\Phi\ w
 						\end{array}
@@ -79,27 +79,27 @@ let complete descr rn =
 			}{
 				\texttt{NewProph}
 			}{
-				\lambda\ p \cdot
-				\exists \textcolor{teal}{\gamma}, prophs \cdot
-				\textcolor{blue}{\mathrm{proph}\ p\ \textcolor{teal}{\gamma\ []}\ prophs}
+				\lambda\ p .\,
+				\exists \textcolor{teal}{\gamma}, \mathit{prophs} .\,
+				\textcolor{blue}{\mathrm{proph}\ p\ \textcolor{teal}{\gamma\ []}\ \mathit{prophs}}
 			}
 		\\\\\\
 			\inferrule*
 				{
 					\mathrm{atomic}\ e
 				\\\\
-					\textcolor{blue}{\mathrm{proph}\ p\ \textcolor{teal}{\gamma\ past}\ prophs}
+					\textcolor{blue}{\mathrm{proph}\ p\ \textcolor{teal}{\gamma\ \mathit{past}}\ \mathit{prophs}}
 				\\\\
 					\weakestpre{
 						e
 					}{
 						\begin{array}{l}
-								\lambda w \cdot
-								\forall prophs' \cdot
+								\lambda w .\,
+								\forall \mathit{prophs'} .\,
 							\\
-								\textcolor{red}{prophs = (w, v) :: prophs'} \iSepimp
+								\textcolor{red}{\mathit{prophs} = (w, v) :: \mathit{prophs'}} \iSepimp
 							\\
-								\textcolor{blue}{\mathrm{proph}\ p\ \textcolor{teal}{\gamma\ (past \mdoubleplus [(w, v)])}\ prophs'} \iSepimp
+								\textcolor{blue}{\mathrm{proph}\ p\ \textcolor{teal}{\gamma\ (\mathit{past} \mdoubleplus [(w, v)])}\ \mathit{prophs'}} \iSepimp
 							\\
 								\Phi\ w
 						\end{array}
@@ -121,22 +121,22 @@ let complete descr rn =
 \begin{mathpar}
 	\inferrule*[lab=ProphecyLbGet]
 		{
-			\mathrm{proph}\ p\ \gamma\ past\ \textcolor{blue}{prophs}
+			\mathrm{proph}\ p\ \gamma\ \mathit{past}\ \textcolor{blue}{\mathit{prophs}}
 		}{
-			\mathrm{proph \mathhyphen lb}\ \gamma\ \textcolor{blue}{prophs}
+			\mathrm{proph \mathhyphen lb}\ \gamma\ \textcolor{blue}{\mathit{prophs}}
 		}
 	\\\\
 	\inferrule*[lab=ProphecyValid]
 		{
-			\mathrm{proph}\ p\ \gamma\ \textcolor{red}{past}\ \textcolor{blue}{prophs_1}
+			\mathrm{proph}\ p\ \gamma\ \textcolor{red}{\mathit{past}}\ \textcolor{blue}{\mathit{prophs}_1}
 		\and
-			\mathrm{proph \mathhyphen lb}\ \gamma\ \textcolor{teal}{prophs_2}
+			\mathrm{proph \mathhyphen lb}\ \gamma\ \textcolor{teal}{\mathit{prophs}_2}
 		}{
-			\exists \textcolor{purple}{past_1}, \textcolor{orange}{past_2} \cdot
+			\exists \textcolor{purple}{\mathit{past}_1}, \textcolor{orange}{\mathit{past}_2} .\,
 			{\bigwedge\left[\begin{array}{rcl}
-					\textcolor{red}{past} = \textcolor{purple}{past_1} \mdoubleplus & \textcolor{orange}{past_2} &
+					\textcolor{red}{\mathit{past}} = \textcolor{purple}{\mathit{past}_1} \mdoubleplus & \textcolor{orange}{\mathit{past}_2} &
 				\\
-					& \textcolor{orange}{past_2} & \mdoubleplus\, \textcolor{blue}{prophs_1} = \textcolor{teal}{prophs_2}
+					& \textcolor{orange}{\mathit{past}_2} & \mdoubleplus\, \textcolor{blue}{\mathit{prophs}_1} = \textcolor{teal}{\mathit{prophs}_2}
 			\end{array}\right.}
 		}
 \end{mathpar}
