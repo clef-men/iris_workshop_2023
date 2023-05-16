@@ -18,25 +18,25 @@
 		\draw[very thick] (\hist, 0) -- ++(0, 1) node[label=above:front] {} ;
 	}
 
-	\only<4->{
+	\only<3->{
 		\draw[very thick] (\hist + \model, 0) -- ++(0, 1) node[label=above:back] {} ;
 	}
 
-	\only<5->{
+	\only<4->{
 		\fill[red, opacity=0.2] (\hist + \model, 0) rectangle ++(\priv, 1) ;
 		\draw[decorate, decoration={brace, amplitude=5pt}] (\hist + \model + \priv, -0.2) -- ++(- \priv, 0) node [midway, yshift=-5mm] {priv} ;
 	}
 
-	\only<6->{
+	\only<5->{
 		\fill[green, opacity=0.2] (\hist, 0) rectangle ++(\model, 1) ;
 		\draw[decorate, decoration={brace, amplitude=5pt}] (\hist + \model, -0.2) -- ++(- \model, 0) node [midway, yshift=-5mm] {model} ;
 	}
-	\only<7->{
+	\only<6->{
 		\fill[blue, opacity=0.2] (0, 0) rectangle ++(\hist, 1) ;
 		\draw[decorate, decoration={brace, amplitude=5pt}] (\hist, -0.2) -- ++(- \hist, 0) node [midway, yshift=-5mm] {hist} ;
 	}
 
-	\only<9->{
+	\only<7->{
 		\fill[blue, opacity=0.2] (\hist, 0) rectangle ++(\histx, 1) ;
 		\draw[decorate, decoration={brace, amplitude=5pt}] (\hist + \histx, - 1) -- ++(- \hist - \histx, 0) node [midway, yshift=-5mm] {hist\textsubscript{+}} ;
 	}
@@ -45,7 +45,7 @@
 		\draw[thick, ->, blue] (\hist, 0.5) -- ++(1, 0) node[midway, below] {\footnotesize\texttt{steal}} ;
 	}
 	
-	\only<4->{
+	\only<3->{
 		\draw[thick, ->, teal] (\hist + \model, 0.5) -- ++(- 1, 0) node[midway, below] {\footnotesize\texttt{pop}} ;
 		\draw[thick, ->, red] (\hist + \model, 0.5) -- ++(1, 0) node[midway, below] {\footnotesize\texttt{push}} ;
 	}
@@ -54,66 +54,12 @@
 \begin{itemize}
 	\item[data:]<1-> infinite array storing all values
 	\item[front:]<2-> \emph{monotone} index for thieves' end
-	\item[back:]<4-> index for owner's end
+	\item[back:]<3-> index for owner's end
 \end{itemize}
 \begin{itemize}
-	\item[priv:]<5-> list of private values (controlled by owner)
-	\item[model:]<6-> list of contained values
-	\item[hist:]<7-> \emph{monotone} list of history values
-	\item[hist\textsubscript{+}:]<9-> \emph{monotone} list of extended history values
+	\item[priv:]<4-> list of private values (controlled by owner)
+	\item[model:]<5-> list of contained values
+	\item[hist:]<6-> \emph{monotone} list of history values
+	\item[hist\textsubscript{+}:]<7-> \emph{monotone} list of extended history values
 \end{itemize}
-\begin{overbox}<3>
-	\begin{mathpar}
-		\inferrule*[lab=ChaselevFrontLbGet]
-			{
-				\iGhost{\gamma\mathrm{.front}}{\iAuth{\textcolor{blue}{\mathit{front}}}}
-			}{
-				\iGhost{\gamma\mathrm{.front}}{\iFrag{\textcolor{blue}{\mathit{front}}}}
-			}
-		\and
-		\inferrule*[lab=ChaselevFrontValid]
-			{
-				\iGhost{\gamma\mathrm{.front}}{\iAuth{\textcolor{blue}{\mathit{front}_1}}}
-			\and
-				\iGhost{\gamma\mathrm{.front}}{\iFrag{\textcolor{red}{\mathit{front}_2}}}
-			}{
-				\textcolor{red}{\mathit{front}_2} \leq \textcolor{blue}{\mathit{front}_1}
-			}
-		\and
-		\inferrule*[lab=ChaselevFrontUpdate]
-			{
-				\textcolor{blue}{\mathit{front}} \leq \textcolor{red}{\mathit{front'}}
-			\and
-				\iGhost{\gamma\mathrm{.front}}{\iAuth{\textcolor{blue}{\mathit{front}}}}
-			}{
-				\iGhost{\gamma\mathrm{.front}}{\iAuth{\textcolor{red}{\mathit{front'}}}}
-			}
-	\end{mathpar}
-\end{overbox}
-\begin{overbox}<8>
-	\begin{mathpar}
-		\inferrule*[lab=ChaselevHistLbGet]
-			{
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{\textcolor{blue}{\mathit{hist}}}}
-			}{
-				\iGhost{\gamma\mathrm{.hist}}{\iFrag{\textcolor{blue}{\mathit{hist}}}}
-			}
-		\and
-		\inferrule*[lab=ChaselevHistValid]
-			{
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{\textcolor{blue}{\mathit{hist}_1}}}
-			\and
-				\iGhost{\gamma\mathrm{.hist}}{\iFrag{\textcolor{red}{\mathit{hist}_2}}}
-			}{
-				\textcolor{red}{\mathit{hist}_2} \sqsubseteq_\mathrm{prefix} \textcolor{blue}{\mathit{hist}_1}
-			}
-		\and
-		\inferrule*[lab=ChaselevHistUpdate]
-			{
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{\textcolor{blue}{\mathit{hist}}}}
-			}{
-				\iGhost{\gamma\mathrm{.hist}}{\iAuth{(\textcolor{blue}{\mathit{hist}} \mdoubleplus [v])}}
-			}
-	\end{mathpar}
-\end{overbox}
 \end{frame}
