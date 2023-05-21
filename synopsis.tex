@@ -1,20 +1,13 @@
-\begin{frame}{Why is it interesting?}
-\begin{itemize}
-	\setlength\itemsep{1em}
-	\item Demonstration of Iris on a (simplified) real-life concurrent data structure.
-	\item Rich ghost state to enforce a subtle protocol.
-		\begin{itemize}
-			\item logical state $\neq$ physical state
-			\item external future-dependent linearization point
-		\end{itemize}
-	\item Nontrivial use of prophecy variables.
-\end{itemize}
-\end{frame}
-
 \begin{frame}{The rest of this talk}
 \begin{itemize}
-	\item Specification using logically atomic triples.
-	\item Rough idea of how the data structure works.
+	\setlength\itemsep{1em}
+	\item Specification in \Iris (logically atomic triples).
+	\item Sketch of the proof for a \emph{simplified} version with one infinite array (as opposed to multiple circular arrays).
+		\begin{itemize}
+			\item physical state
+			\item logical state
+			\item external future-dependent linearization point
+		\end{itemize}
 	\item Why we need prophecy variables.
 \end{itemize}
 \end{frame}
