@@ -1,4 +1,5 @@
 \begin{frame}{Infinite array}
+\small
 \[
 	\begin{array}{c}
 			\triplePretty{
@@ -7,35 +8,49 @@
 				\texttt{inf\_array\_make}\ v
 			}{
 				\lambda\ \mathit{arr} .\ 
-				\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{arr}\ (\lambda \_ .\ v)
+				\exists \gamma .\
+				\textcolor{blue}{\mathrm{inf \mathhyphen array \mathhyphen inv}\ \mathit{arr}\ \gamma\ \iota} \iSep
+				\textcolor{red}{\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{arr}\ \gamma\ (\lambda \_ .\ v)}
 			}
 		\\\\\\
-			\atriplePretty{
+			\atripleExtPretty{
+				\textcolor{blue}{\mathrm{inf \mathhyphen array \mathhyphen inv}\ \mathit{arr}\ \gamma\ \iota} \iSep
+				0 \leq i
+			}{
 				\mathit{vs}
 			}{
-				\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{arr}\ \mathit{vs} \iSep
-				0 \leq i
+				\textcolor{red}{\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{arr}\ \gamma\ \mathit{vs}}
 			}{
 				\texttt{inf\_array\_get}\ \mathit{arr}\ i
 			}{
+				\uparrow\iota
+			}{
+			}{
+				\textcolor{red}{\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{arr}\ \gamma\ \mathit{vs}}
 			}{
 				\mathit{vs}\ i
 			}{
-				\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{arr}\ \mathit{vs}
+				\iTrue
 			}
 		\\\\\\
-			\atriplePretty{
+			\atripleExtPretty{
+				\textcolor{blue}{\mathrm{inf \mathhyphen array \mathhyphen inv}\ \mathit{arr}\ \gamma\ \iota} \iSep
+				0 \leq i
+			}{
 				\mathit{vs}
 			}{
-				\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{arr}\ \mathit{vs} \iSep
-				0 \leq i
+				\textcolor{red}{\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{arr}\ \gamma\ \mathit{vs}}
 			}{
 				\texttt{inf\_array\_set}\ \mathit{arr}\ i\ v
 			}{
+				\uparrow\iota
 			}{
-				\_
 			}{
-				\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{arr}\ \mathit{vs} [i \mapsto v]
+				\textcolor{red}{\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{arr}\ \gamma\ \mathit{vs} [i \mapsto v]}
+			}{
+				\exprUnit
+			}{
+				\iTrue
 			}
 	\end{array}
 \]

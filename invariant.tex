@@ -13,7 +13,9 @@
 						\ell\mathrm{.data} \mapsto_\square \mathit{data} \iSep
 						\ell\mathrm{.prophecy} \mapsto_\square p
 					\\
-						\iInv{\iota}{\mathrm{chaselev \mathhyphen inv \mathhyphen inner}\ \ell\ \gamma\ \iota\ \mathit{data}\ p}
+						\mathrm{inf \mathhyphen array \mathhyphen inv}\ \mathit{arr}\ \gamma\mathrm{.data}\ \iota\mathrm{.data}
+					\\
+						\iInv{\iota}{\mathrm{chaselev \mathhyphen inv \mathhyphen inner}\ \ell\ \gamma\ \iota\mathrm{.inv}\ \mathit{data}\ p}
 				\end{array}\right.
 		\end{array}
 \end{align*}
@@ -37,7 +39,7 @@
 					\\
 						\iGhost{\gamma\mathrm{.front}}{\iAuth{\mathit{front}}}
 					\\
-						\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{data}\ (\mathit{hist} \mdoubleplus \mathit{model})\ \mathit{priv}
+						\mathrm{inf \mathhyphen array \mathhyphen model}\ \mathit{data}\ \gamma\mathrm{.data}\ (\mathit{hist} \mdoubleplus \mathit{model})\ \mathit{priv}
 					\\
 						\iGhost{\gamma\mathrm{.model}}{\iAuth{\mathit{model}}} \iSep
 						| \mathit{model} | = (\mathit{back} - \mathit{front})_+
