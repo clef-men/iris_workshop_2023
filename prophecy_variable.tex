@@ -50,27 +50,6 @@ Jung, Lepigre, Parthasarathy, Rapoport, Timany, Dreyer \& Jacobs (2020).
 
 % ---------------------------------------------------------
 
-\begin{frame}[fragile]{Back to \textit{The future is ours} (Jung \etal)}
-\begin{Verbatim}[commandchars=\\\{\}]
-let rdcss rm rn m1 n1 n2 =
-  \textcolor{blue}{let p = NewProph in}
-  let descr = ref (rm, m1, n1, n2, p) in
-  ...
-\end{Verbatim}
-\vfill
-\begin{Verbatim}[commandchars=\\\{\}]
-let complete descr rn =
-  let (rm, m1, n1, n2, p) = !descr in
-  \textcolor{blue}{let id = NewId in}
-  let m = !rm in
-  let n_new = if m = m1 then n2 else n1 in
-  \textcolor{blue}{Resolve} (CmpXchg rn (inr descr) (inl n_new)) \textcolor{blue}{p id} ;
-  ()
-\end{Verbatim}
-\end{frame}
-
-% ---------------------------------------------------------
-
 \begin{frame}{Prophecy variables with memory}
 \[
 	\begin{array}{c}
