@@ -32,7 +32,7 @@
 				\iGhost{\gamma\mathrm{.hist}}{\iAuth{\mathit{hist}}} \iSep
 				| \mathit{hist} | = \mathit{front}
 			\\
-				\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} .\ \iFrag{-}}
+				\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \ldotp \iFrag{-}}
 		\end{array}\right.
 \end{align*}
 \end{frame}
@@ -52,19 +52,19 @@
 				| \mathit{hist} | = \mathit{front}
 			\\\\
 				\begin{array}{l}
-						\bold{match}\ \mathrm{filter}\ (\lambda (\mathit{front'}, \_) .\ \mathit{front'} = \mathit{front})\ \mathit{prophs}\ \bold{with}
+						\bold{match}\ \mathrm{filter}\ (\lambda (\mathit{front'}, \_) \ldotp \mathit{front'} = \mathit{front})\ \mathit{prophs}\ \bold{with}
 					\\
 						|\ [] \Rightarrow
-						\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} .\ \iFrag{-}}
+						\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \ldotp \iFrag{-}}
 					\\
 						|\ (\_, \mathit{id}) :: \_ \Rightarrow
 					\\
 						\ \ 
 						\bigvee\left[\begin{array}{l}
-								\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} .\ \iFrag{-}}
+								\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \ldotp \iFrag{-}}
 							\\
 								\mathrm{identifier}\ \mathit{id} \iSep
-								\exists \Phi .\ 
+								\exists \Phi \ldotp
 								\iGhost{\gamma\mathrm{.winner}}{\iAuth{(\mathit{front}, \Phi)}} \iSep
 								\mathrm{chaselev \mathhyphen au}\ \gamma\ \iota\ \Phi
 						\end{array}\right.
@@ -88,13 +88,13 @@
 				| \mathit{hist} | = \mathit{front} + 1
 			\\\\
 				\begin{array}{l}
-						\bold{match}\ \mathrm{filter}\ (\lambda (\mathit{front'}, \_) .\ \mathit{front'} = \mathit{front})\ \mathit{prophs}\ \bold{with}
+						\bold{match}\ \mathrm{filter}\ (\lambda (\mathit{front'}, \_) \ldotp \mathit{front'} = \mathit{front})\ \mathit{prophs}\ \bold{with}
 					\\
 						|\ [] \Rightarrow
 						\iGhost{\gamma\mathrm{.winner}}{\iFrag{(\mathit{front}, -)}}
 					\\
 						|\ \_ \Rightarrow
-						\exists \Phi .\ 
+						\exists \Phi \ldotp
 						\iGhost{\gamma\mathrm{.winner}}{\iAuth{(\mathit{front}, \Phi)}} \iSep
 						\Phi\ (\exprSome{\mathit{hist} [\mathit{front}]})
 				\end{array}
@@ -115,7 +115,7 @@
 				\iGhost{\gamma\mathrm{.hist}}{\iAuth{hist}} \iSep
 				| \mathit{hist} | = \mathit{front}
 			\\
-				\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} .\ \iFrag{-}}
+				\iGhost{\gamma\mathrm{.winner}}{\iAuth{-} \ldotp \iFrag{-}}
 		\end{array}\right.
 \end{align*}
 \end{frame}

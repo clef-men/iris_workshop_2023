@@ -12,8 +12,8 @@ Jung, Lepigre, Parthasarathy, Rapoport, Timany, Dreyer \& Jacobs (2020).
 			}{
 				\texttt{NewProph}
 			}{
-				\lambda\ p .\,
-				\exists prophs .\,
+				\lambda\ p \ldotp
+				\exists prophs \ldotp
 				\textcolor{blue}{\mathrm{proph}\ p\ \mathit{prophs}}
 			}
 		\\\\\\
@@ -27,9 +27,8 @@ Jung, Lepigre, Parthasarathy, Rapoport, Timany, Dreyer \& Jacobs (2020).
 						e
 					}{
 						\begin{array}{l}
-								\lambda w .\,
-								\forall \mathit{prophs'} .\,
-							\\
+								\lambda w \ldotp
+								\forall \mathit{prophs'} \ldotp							\\
 								\textcolor{red}{\mathit{prophs} = (w, v) :: \mathit{prophs'}} \iSepimp
 							\\
 								\textcolor{blue}{\mathrm{proph}\ p\ \mathit{prophs'}} \iSepimp
@@ -58,8 +57,8 @@ Jung, Lepigre, Parthasarathy, Rapoport, Timany, Dreyer \& Jacobs (2020).
 			}{
 				\texttt{NewProph}
 			}{
-				\lambda\ p .\,
-				\exists \textcolor{teal}{\gamma}, \mathit{prophs} .\,
+				\lambda\ p \ldotp
+				\exists \textcolor{teal}{\gamma}, \mathit{prophs} \ldotp
 				\textcolor{blue}{\mathrm{proph}\ p\ \textcolor{teal}{\gamma\ []}\ \mathit{prophs}}
 			}
 		\\\\\\
@@ -73,8 +72,8 @@ Jung, Lepigre, Parthasarathy, Rapoport, Timany, Dreyer \& Jacobs (2020).
 						e
 					}{
 						\begin{array}{l}
-								\lambda w .\,
-								\forall \mathit{prophs'} .\,
+								\lambda w \ldotp
+								\forall \mathit{prophs'} \ldotp
 							\\
 								\textcolor{red}{\mathit{prophs} = (w, v) :: \mathit{prophs'}} \iSepimp
 							\\
@@ -111,7 +110,7 @@ Jung, Lepigre, Parthasarathy, Rapoport, Timany, Dreyer \& Jacobs (2020).
 		\and
 			\mathrm{proph \mathhyphen lb}\ \gamma\ \textcolor{teal}{\mathit{prophs}_2}
 		}{
-			\exists \textcolor{purple}{\mathit{past}_1}, \textcolor{orange}{\mathit{past}_2} .\,
+			\exists \textcolor{purple}{\mathit{past}_1}, \textcolor{orange}{\mathit{past}_2} \ldotp
 			{\bigwedge\left[\begin{array}{rcl}
 					\textcolor{red}{\mathit{past}} = \textcolor{purple}{\mathit{past}_1} \mdoubleplus & \textcolor{orange}{\mathit{past}_2} &
 				\\
